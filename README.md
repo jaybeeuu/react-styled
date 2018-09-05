@@ -13,9 +13,12 @@
 - [ ] Decide simple use case
   - [ ] Photo viewer?
 - [ ] Get infrastructure going
-- [ ] Tests?
 - [ ] Server?
 - [ ] Eject?
+- [ ] Transitions
+- [ ] Animations
+- [ ] Form?
+- [ ] Tests?
 
 ## Presentation
 
