@@ -91,7 +91,16 @@
       }
     },
     {
-      "files": "**/config/**/*.*",
+      "files": [
+        "**/config/**/*.*",
+        "**/webpack.config.js"
+      ],
+      "env": {
+        "node": true
+      },
+      "parserOptions": {
+        "sourceType": "module"
+      },
       "rules": {
         "no-console": "off"
       }
