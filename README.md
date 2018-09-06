@@ -5,8 +5,9 @@
 - [ ] Inline Styles
   - [ ] Radium or similar
 - [ ] CSS Modules
+  - [ ] Testing with CSS modules.
 - [ ] SASS
-- [ ] Other
+- [ ] UI Testing without classes.
 
 ## App Roadmap
 
@@ -19,6 +20,9 @@
 - [ ] Animations
 - [ ] Form?
 - [ ] Tests?
+  - I think this will be a goo idea. - UI tests are an important consideration.
+- [x] Eject?
+  - I found a simple react-starter repo in github and have forked it. Will use that as the beginning. (will need to be pared down a bit to keep things clean and easy, but it is much closer.)
 
 ## Presentation
 
