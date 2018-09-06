@@ -1,106 +1,106 @@
 {
-    "plugins": [
-      "dependencies",
-      "jest",
-      "jasmine"
-    ],
-    "extends": [
-      "react-app",
-      "eslint:recommended",
-      "plugin:jasmine/recommended",
-      "plugin:jest/recommended"
-    ],
-    "env": {
-      "es6": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 2018
-    },
-    "rules": {
-      "brace-style": [
-        "error",
-        "1tbs",
-        {
-          "allowSingleLine": false
-        }
-      ],
-      "dependencies/case-sensitive": "error",
-      "dependencies/no-unresolved": "error",
-      "linebreak-style": [
-        "error",
-        "unix"
-      ],
-      "indent": [
-        "error",
-        4,
-        {
-          "SwitchCase": 1
-        }
-      ],
-      "no-unused-vars": "warn",
-      "multiline-ternary": [
-        "error",
-        "always-multiline"
-      ],
-      "quotes": [
-        "error",
-        "double"
-      ],
-      "semi": [
-        "error",
-        "always"
-      ],
-      "space-before-blocks": [
-        "error",
-        "always"
-      ],
-      "space-before-function-paren": [
-        "error",
-        {
-          "anonymous": "always",
-          "named": "never",
-          "asyncArrow": "always"
-        }
-      ],
-      "strict": [
-        "error",
-        "safe"
-      ],
-      "jasmine/no-unsafe-spy": "off",
-      "jasmine/no-suite-dupes": [
-        "warn",
-        "branch"
-      ],
-      "jasmine/no-spec-dupes": [
-        "warn",
-        "branch"
-      ],
-      "jasmine/no-global-setup": "off",
-      "jest/prefer-to-have-length": "off"
-    },
-    "overrides": [
+  "plugins": [
+    "dependencies",
+    "jest",
+    "jasmine"
+  ],
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:jasmine/recommended",
+    "plugin:jest/recommended"
+  ],
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "brace-style": [
+      "error",
+      "1tbs",
       {
-        "files": "**/[Ss]pec/**/*.[Jj]s",
-        "env": {
-          "jasmine": true,
-          "jest/globals": true
-        }
-      },
-      {
-        "files": "**/config/**/*.*",
-        "rules": {
-          "no-console": "off"
-        }
-      },
-      {
-        "files": "**/[Ss]cripts/**/*.[Jj]s",
-        "env": {
-          "node": true,
-          "es6": true
-        },
-        "rules": {
-          "no-console": "off"
-        }
+        "allowSingleLine": false
       }
-    ]
-  }
+    ],
+    "dependencies/case-sensitive": "error",
+    "dependencies/no-unresolved": "error",
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "indent": [
+      "error",
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-unused-vars": "warn",
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "space-before-blocks": [
+      "error",
+      "always"
+    ],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "strict": [
+      "error",
+      "safe"
+    ],
+    "jasmine/no-unsafe-spy": "off",
+    "jasmine/no-suite-dupes": [
+      "warn",
+      "branch"
+    ],
+    "jasmine/no-spec-dupes": [
+      "warn",
+      "branch"
+    ],
+    "jasmine/no-global-setup": "off",
+    "jest/prefer-to-have-length": "off"
+  },
+  "overrides": [
+    {
+      "files": "**/[Ss]pec/**/*.[Jj]s",
+      "env": {
+        "jasmine": true,
+        "jest/globals": true
+      }
+    },
+    {
+      "files": "**/config/**/*.*",
+      "rules": {
+        "no-console": "off"
+      }
+    },
+    {
+      "files": "**/[Ss]cripts/**/*.[Jj]s",
+      "env": {
+        "node": true,
+        "es6": true
+      },
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}
