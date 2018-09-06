@@ -5,8 +5,8 @@
     "jasmine"
   ],
   "extends": [
-    "react-app",
     "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:jasmine/recommended",
     "plugin:jest/recommended"
   ],
@@ -14,7 +14,11 @@
     "es6": true
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+        "jsx": true
+    }
   },
   "rules": {
     "brace-style": [
@@ -32,7 +36,7 @@
     ],
     "indent": [
       "error",
-      4,
+      2,
       {
         "SwitchCase": 1
       }
