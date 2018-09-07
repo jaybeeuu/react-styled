@@ -11,13 +11,19 @@
     "plugin:jest/recommended"
   ],
   "env": {
-    "es6": true
+    "es6": true,
+    "browser": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
         "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "16.0"
     }
   },
   "rules": {
@@ -93,23 +99,15 @@
     {
       "files": [
         "**/config/**/*.*",
-        "**/webpack.config.js"
+        "**/webpack.config.js",
+        "**/[Ss]cripts/**/*.[Jj]s"
       ],
       "env": {
-        "node": true
+        "node": true,
+        "browser": false
       },
       "parserOptions": {
         "sourceType": "module"
-      },
-      "rules": {
-        "no-console": "off"
-      }
-    },
-    {
-      "files": "**/[Ss]cripts/**/*.[Jj]s",
-      "env": {
-        "node": true,
-        "es6": true
       },
       "rules": {
         "no-console": "off"

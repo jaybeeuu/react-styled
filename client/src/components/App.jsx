@@ -1,18 +1,9 @@
-import React, { Component } from "react";
-import logo from "../logo.png";
+import React from "react";
 
-export default class App extends Component {
+const App = () => (
+  <div className="container">
+    <h1 className="title">React Starter</h1>
+  </div>
+);
 
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <img className="logo" src={logo} />
-        <h1 className="title">React Starter</h1>
-      </div>
-    );
-  }
-}
+export default App;
