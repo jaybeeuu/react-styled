@@ -10,9 +10,11 @@ module.exports = {
   entry: [
     paths.appIndexJs,
   ],
+  watch: true,
   output: {
     pathinfo: true,
-    filename: "static/js/bundle.js",
+    path: paths.appBuild,
+    filename: "bundle.js",
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, "/"),
   },
@@ -70,7 +72,7 @@ module.exports = {
       template: paths.appHtml,
     }),
     new webpack.DefinePlugin(process.env),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new CaseSensitivePathsPlugin(),
   ],
   // Some libraries import Node modules but don't use them in the browser.

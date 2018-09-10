@@ -5,8 +5,11 @@ module.exports = {
   compress: true,
   contentBase: paths.appPublic,
   watchContentBase: true,
-  open: true,
   hot: true,
+  open: true,
   publicPath: config.output.publicPath,
-  overlay: true
+  overlay: {
+    warnings: true,
+    errors: true
+  }
 };
