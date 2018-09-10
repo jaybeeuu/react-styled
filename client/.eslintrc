@@ -1,6 +1,6 @@
-{
+  {
   "plugins": [
-    "dependencies",
+    "import",
     "jest",
     "jasmine"
   ],
@@ -24,6 +24,11 @@
   "settings": {
     "react": {
       "version": "16.0"
+    },
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack.config.dev.js"
+      }
     }
   },
   "rules": {
@@ -34,8 +39,7 @@
         "allowSingleLine": false
       }
     ],
-    "dependencies/case-sensitive": "error",
-    "dependencies/no-unresolved": "error",
+    "import/no-unresolved": ["error", { "caseSensitive": true } ],
     "linebreak-style": [
       "error",
       "unix"

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "A basic template that consists of the essential elements that are required to start building a React application",
   "scripts": {
-    "lint": "eslint .; exit 0",
-    "lint:fix": "eslint . --fix; exit 0",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "start": "node scripts/start.js",
-    "test": "echo \"No tests available\"; exit 0"
+    "test": "echo \"No tests available\"; exit 1;"
   },
   "repository": {
     "type": "git",
@@ -30,19 +30,21 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
+    "eslint-import-resolver-webpack": "^0.10.1",
     "eslint-loader": "^2.1.0",
-    "eslint-plugin-dependencies": "^2.4.0",
     "eslint-plugin-jasmine": "^2.10.1",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-react": "^7.8.2",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "install": "^0.12.1",
     "url-loader": "^1.1.1",
     "webpack": "^4.9.1",
     "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "eslint-plugin-import": "^2.14.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0"
   }

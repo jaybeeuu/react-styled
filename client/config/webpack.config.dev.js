@@ -16,6 +16,9 @@ module.exports = {
     devtoolModuleFilenameTemplate: info =>
       path.resolve(info.absoluteResourcePath).replace(/\\/g, "/"),
   },
+  resolve: {
+    extensions: [".js", ".jsx"],
+  },
   module: {
     strictExportPresence: true,
     rules: [

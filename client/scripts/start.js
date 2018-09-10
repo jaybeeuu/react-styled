@@ -1,7 +1,6 @@
 process.env.BABEL_ENV = "development";
 process.env.NODE_ENV = "development";
 
-const fs = require("fs");
 const chalk = require("chalk");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
@@ -14,8 +13,8 @@ const PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = "0.0.0.0";
 
 if (PORT == null) {
-  // We have not found a port.
-  return;
+  console.error("We have not found a port.");
+  process.exit();
 }
 
 const compiler = webpack(config);
