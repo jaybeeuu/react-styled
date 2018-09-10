@@ -7,7 +7,6 @@ module.exports = {
   watchContentBase: true,
   hot: true,
   open: true,
-  publicPath: config.output.publicPath,
   overlay: {
     warnings: true,
     errors: true

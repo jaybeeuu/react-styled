@@ -6,20 +6,28 @@ const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
 
 const config = require("../config/webpack.config.dev");
+
+const readyForReloadConfig = {
+  ...config,
+  entry: [
+    require.resolve("webpack-dev-server/client") + "?/",
+    require.resolve("webpack/hot/dev-server"),
+    ...config.entry
+  ],
+  plugins: [
+    ...config.plugins,
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
+
+const compiler = webpack(readyForReloadConfig);
+
 const serverConfig = require("../config/webpackDevServer.config");
 
-// Tools like Cloud9 rely on this.
+const devServer = new WebpackDevServer(compiler, serverConfig);
+
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 const HOST = "0.0.0.0";
-
-if (PORT == null) {
-  console.error("We have not found a port.");
-  process.exit();
-}
-
-const compiler = webpack(config);
-
-const devServer = new WebpackDevServer(compiler, serverConfig);
 
 devServer.listen(PORT, HOST, (err) => {
   if (err) {

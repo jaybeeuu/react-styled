@@ -1,4 +1,3 @@
-const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
@@ -10,13 +9,10 @@ module.exports = {
   entry: [
     paths.appIndexJs,
   ],
-  watch: true,
   output: {
     pathinfo: true,
     path: paths.appBuild,
     filename: "bundle.js",
-    devtoolModuleFilenameTemplate: info =>
-      path.resolve(info.absoluteResourcePath).replace(/\\/g, "/"),
   },
   resolve: {
     extensions: [".js", ".jsx"],
