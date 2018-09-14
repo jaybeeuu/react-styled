@@ -1,6 +1,6 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 const paths = require("./paths");
 
 module.exports = {
@@ -27,7 +27,8 @@ module.exports = {
         use: [
           {
             options: {
-              eslintPath: require.resolve("eslint")
+              eslintPath: require.resolve("eslint"),
+              formatter: require("eslint/lib/formatters/codeframe")
             },
             loader: require.resolve("eslint-loader"),
           },
@@ -78,7 +79,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin(process.env),
     new webpack.NoEmitOnErrorsPlugin(),
-    new CaseSensitivePathsPlugin(),
+    new CaseSensitivePathsPlugin()
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

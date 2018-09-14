@@ -1,4 +1,3 @@
-const config = require("./webpack.config.dev");
 const paths = require("./paths");
 
 module.exports = {
@@ -8,7 +7,7 @@ module.exports = {
   hot: true,
   open: true,
   overlay: {
-    warnings: true,
-    errors: true
+    errors: true,
+    warnings: true
   }
 };
