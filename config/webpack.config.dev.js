@@ -17,6 +17,7 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
+  watch: true,
   module: {
     strictExportPresence: true,
     rules: [
@@ -50,6 +51,14 @@ module.exports = {
             options: {
               cacheDirectory: true,
             },
+          },
+          {
+            test: /\.css|scss$/,
+            use: [
+              "style-loader", // creates style nodes from JS strings
+              "css-loader", // translates CSS into CommonJS
+              "sass-loader" // compiles Sass to CSS, using Node Sass by default
+            ]
           },
           {
             exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
