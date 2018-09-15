@@ -9,5 +9,8 @@ module.exports = {
   overlay: {
     errors: true,
     warnings: true
+  },
+  watchOptions: {
+    ignored: "/node_modules/"
   }
 };

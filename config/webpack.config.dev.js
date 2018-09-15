@@ -18,6 +18,13 @@ module.exports = {
     extensions: [".js", ".jsx"],
   },
   watch: true,
+  stats: {
+    colors: true,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+    modules: false
+  },
   module: {
     strictExportPresence: true,
     rules: [
