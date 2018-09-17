@@ -103,8 +103,8 @@
     {
       "files": [
         "**/config/**/*.*",
-        "**/webpack.config.js",
-        "**/[Ss]cripts/**/*.[Jj]s"
+        "**/scripts/**/*.js",
+        "**/*.config.js"
       ],
       "env": {
         "node": true,
