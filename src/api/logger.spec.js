@@ -3,7 +3,7 @@ import { log } from "./logger";
 describe("logger", () => {
   describe("log", () => {
     it("passes everything onto the clonsole log function.", () => {
-      jest.spyOn(console, "log").and.callFake(() => {});
+      jest.spyOn(console, "log").mockImplementation(() => {});
 
       const args = [1, "2", { id: 3 }];
 
