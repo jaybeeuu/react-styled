@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import simpleSomething from "./simple-something/simple-something";
+import simpleSomething from "./images/reducer";
 
 export default combineReducers({
   simpleSomething
