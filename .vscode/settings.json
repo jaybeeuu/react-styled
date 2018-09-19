@@ -2,5 +2,6 @@
     "eslint.enable": true,
     "eslint.workingDirectories": [
         "./client"
-    ]
+    ],
+    "files.eol": "\n"
 }
