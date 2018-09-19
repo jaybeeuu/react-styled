@@ -21,5 +21,6 @@ module.exports = {
     "js",
     "json",
     "jsx"
-  ]
+  ],
+  resetMocks: true
 };
