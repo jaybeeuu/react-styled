@@ -2,7 +2,7 @@ import { log } from "./logger";
 
 describe("logger", () => {
   describe("log", () => {
-    it("passes everything onto the clonsole log function.", () => {
+    it("Passes everything onto the console log function.", () => {
       jest.spyOn(console, "log").mockImplementation(() => {});
 
       const args = [1, "2", { id: 3 }];

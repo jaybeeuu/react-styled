@@ -8,9 +8,9 @@ import App from "./components/App";
 import { debounce } from "./debounce";
 import configureStore from "./redux/configure-store";
 
-const persitedState = loadState();
+const persistedState = loadState();
 
-const store = configureStore(persitedState);
+const store = configureStore(persistedState);
 
 store.subscribe(debounce(() => {
   saveState({
