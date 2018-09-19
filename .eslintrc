@@ -79,28 +79,31 @@
     "strict": [
       "error",
       "safe"
-    ],
-    "jasmine/no-unsafe-spy": "off",
-    "jasmine/no-suite-dupes": [
-      "warn",
-      "branch"
-    ],
-    "jasmine/no-spec-dupes": [
-      "warn",
-      "branch"
-    ],
-    "jasmine/no-global-setup": "off",
-    "jest/prefer-to-have-length": "off"
+    ]
   },
   "overrides": [
     {
       "files": [
-        "**/[Ss]pec/**/*.[Jj]s",
+        "**/spec/**/*.js",
         "**/test/**/*.js"
       ],
       "env": {
+        "node": true,
         "jasmine": true,
         "jest/globals": true
+      },
+      "rules": {
+        "jasmine/no-unsafe-spy": "off",
+        "jasmine/no-suite-dupes": [
+          "warn",
+          "branch"
+        ],
+        "jasmine/no-spec-dupes": [
+          "warn",
+          "branch"
+        ],
+        "jasmine/no-global-setup": "off",
+        "jest/prefer-to-have-length": "off"
       }
     },
     {

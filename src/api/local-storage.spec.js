@@ -1,30 +1,31 @@
 import { log } from "./logger";
 
-import { loadState, saveState } from "./local-storage";
-import { mockLocalStorage } from "../../test/mock-storage";
+import { MockStorage } from "../../test/mock-storage";
+import { setLocalStorage, loadState, saveState }from "./local-storage";
 
-const noop = () => {};
+jest.mock("./logger");
 
 describe("local-storage", () => {
-  mockLocalStorage();
+  let localStorage;
+  beforeEach(() => {
+    localStorage = new MockStorage();
+    setLocalStorage(localStorage);
+  });
 
-  const stubLocalStorageFunctions = (accessors = {}) => {
-    const { get = noop, set = noop } = accessors;
-
-    // eslint-disable-next-line no-console
-    console.log(localStorage.getItem);
-    const someObj = {
-      getItem: () => {}
-    };
-
-    jest.spyOn(someObj, "getItem").mockImplementation(() => log("It worked!"));
-
-    someObj.getItem();
-  };
+  afterEach(() => {
+    setLocalStorage(window.localStorage);
+  });
 
   describe("loadState", () => {
     it("Logs errors and returns undefined.", () => {
-      stubLocalStorageFunctions();
+      const error = new Error();
+      localStorage.getItem.mockImplementation(() => { throw error; });
+
+      const state = loadState();
+
+      expect(state).not.toBeDefined();
+      expect(log).toHaveBeenCalledTimes(1);
+      expect(log).toHaveBeenCalledWith(error);
     });
   });
 });

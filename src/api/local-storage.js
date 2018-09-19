@@ -1,5 +1,9 @@
 import { log } from "./logger";
 
+let localStorage = window.localStorage;
+
+export const setLocalStorage = (implementation) => localStorage = implementation;
+
 export const loadState = () => {
   try {
     const serializedState = localStorage.getItem("state");

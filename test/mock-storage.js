@@ -1,20 +1,9 @@
-class MockStorage {
+export class MockStorage {
   constructor() {
     this.store = {};
-    this.setItem = (key, val) => this.store[key] = val;
-    this.getItem = (key) => this.store[key];
-    this.removeItem = (key) => delete this.store[key];
-    this.clear = () => this.store = {};
+    this.setItem = jest.fn((key, val) => this.store[key] = val.toString());
+    this.getItem = jest.fn((key) => this.store[key]);
+    this.removeItem = jest.fn((key) => delete this.store[key]);
+    this.clear = jest.fn(() => this.store = {});
   }
 }
-
-export const mockLocalStorage = () => {
-  const originalLocalStorage = window.localStorage;
-  beforeEach(() => {
-    window.localStorage = new MockStorage();
-  });
-
-  afterEach(() => {
-    window.localStorage = originalLocalStorage;
-  });
-};

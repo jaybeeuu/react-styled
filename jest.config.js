@@ -7,7 +7,7 @@ module.exports = {
   testMatch: [
     "<rootDir>/(src|spec)/**/?(*.)([Ss]pec|[Tt]est).{js,jsx}"
   ],
-  testEnvironment: "node",
+  testEnvironment: "jsdom",
   testURL: "http://localhost",
   transform: {
     "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
