@@ -1,3 +1,4 @@
+import defaultState from "./default-state.json";
 import { log } from "./logger";
 
 let localStorage = window.localStorage;
@@ -9,7 +10,7 @@ export const loadState = () => {
     const serializedState = localStorage.getItem("state");
 
     return serializedState === null
-      ? undefined
+      ? defaultState
       : JSON.parse(serializedState);
   } catch (err) {
     log(err);

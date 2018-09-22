@@ -3,6 +3,8 @@ import { log } from "./logger";
 import { MockStorage } from "../../test/mock-storage";
 import { setLocalStorage, loadState, saveState }from "./local-storage";
 
+import defaultState from "./default-state.json";
+
 jest.mock("./logger");
 
 describe("local-storage", () => {
@@ -29,12 +31,12 @@ describe("local-storage", () => {
       expect(log).toHaveBeenCalledWith(error);
     });
 
-    it("returns undefined if no state is found.", () => {
+    it("returns default-state if no state is found.", () => {
       localStorage.getItem.mockReturnValue(null);
 
       const state = loadState();
 
-      expect(state).not.toBeDefined();
+      expect(state).toBe(defaultState);
     });
 
     it("returns the JSON.parsed state.", () => {
