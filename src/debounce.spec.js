@@ -1,6 +1,4 @@
-import chalk from "chalk";
-import { log } from "./api/logger";
-import { debounce } from "./debounce";
+import debounce from "./debounce";
 
 describe("debounce", () => {
   beforeEach(()=> {
@@ -62,7 +60,7 @@ describe("debounce", () => {
   });
 
   it("returns a function that will schedule another executtion after another delay if a second execution has occurred.", () => {
-    const actor = jest.fn().mockImplementation(() => log(chalk.yellow("executed")));
+    const actor = jest.fn();
     const delay = 500;
     const debounced = debounce(actor, delay);
 

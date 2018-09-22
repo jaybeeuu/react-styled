@@ -1,4 +1,4 @@
-import { log } from "./logger";
+import log from "./logger";
 
 import { MockStorage } from "../../test/mock-storage";
 import { setLocalStorage, loadState, saveState }from "./local-storage";

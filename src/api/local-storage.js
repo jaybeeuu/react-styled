@@ -1,5 +1,5 @@
 import defaultState from "./default-state.json";
-import { log } from "./logger";
+import log from "./logger";
 
 let localStorage = window.localStorage;
 

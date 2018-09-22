@@ -1,4 +1,4 @@
-export const debounce = (actor, delay) => {
+const debounce = (actor, delay) => {
   let nextStrategy;
 
   let executeOnTimeout = false;
@@ -25,3 +25,5 @@ export const debounce = (actor, delay) => {
 
   return () => nextStrategy();
 };
+
+export default debounce;
