@@ -1,13 +1,27 @@
 export const debounce = (actor, delay) => {
-  let timeout = null;
-  return () => {
-    if (timeout) {
-      return;
-    }
+  let nextStrategy;
 
-    timeout = setTimeout(() => {
-      timeout = null;
-      actor();
+  let executeOnTimeout = false;
+
+  const runImmediate = () => {
+    actor();
+    executeOnTimeout = false;
+    nextStrategy = scheduleExecution;
+
+    setTimeout(() => {
+      if(executeOnTimeout) {
+        runImmediate();
+      } else {
+        nextStrategy = runImmediate;
+      }
     }, delay);
   };
+
+  const scheduleExecution = () => {
+    executeOnTimeout = true;
+  };
+
+  nextStrategy = runImmediate;
+
+  return () => nextStrategy();
 };
