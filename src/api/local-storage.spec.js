@@ -22,7 +22,9 @@ describe("local-storage", () => {
   describe("loadState", () => {
     it("Logs errors and returns undefined.", () => {
       const error = new Error();
-      localStorage.getItem.mockImplementation(() => { throw error; });
+      localStorage.getItem.mockImplementation(() => {
+        throw error;
+      });
 
       const state = loadState();
 
@@ -55,7 +57,9 @@ describe("local-storage", () => {
   describe("saveState", () => {
     it("Logs errors.", () => {
       const error = new Error();
-      localStorage.setItem.mockImplementation(() => { throw error; });
+      localStorage.setItem.mockImplementation(() => {
+        throw error;
+      });
 
       saveState({});
 

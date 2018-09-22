@@ -59,7 +59,7 @@ describe("debounce", () => {
     expect(actor).toHaveBeenCalledTimes(2);
   });
 
-  it("returns a function that will schedule another executtion after another delay if a second execution has occurred.", () => {
+  it("returns a function that will schedule another execution after another delay if a second execution has occurred.", () => {
     const actor = jest.fn();
     const delay = 500;
     const debounced = debounce(actor, delay);

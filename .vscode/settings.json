@@ -3,5 +3,9 @@
     "eslint.workingDirectories": [
         "./client"
     ],
-    "files.eol": "\n"
+    "files.eol": "\n",
+    "cSpell.words": [
+        "debounced",
+        "preloader"
+    ]
 }
