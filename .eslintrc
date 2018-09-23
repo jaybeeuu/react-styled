@@ -1,8 +1,9 @@
 {
   "plugins": [
+    "babel",
     "import",
-    "jest",
-    "jasmine"
+    "jasmine",
+    "jest"
   ],
   "extends": [
     "eslint:recommended",
@@ -14,9 +15,12 @@
     "es6": true,
     "browser": true
   },
+  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2018,
     "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": true,
+    "ecmaVersion": 2018,
     "ecmaFeatures": {
       "jsx": true
     }
@@ -32,42 +36,20 @@
     }
   },
   "rules": {
-    "brace-style": [
-      "error",
-      "1tbs",
-      {
-        "allowSingleLine": false
-      }
-    ],
+    "babel/new-cap": "warn",
+    "babel/no-invalid-this": "warn",
+    "babel/no-unused-expressions": "warn",
+    "babel/object-curly-spacing": [ "error", "always" ],
+    "babel/quotes": ["error", "double"],
+    "babel/semi": ["error", "always"],
+    "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
     "import/no-unresolved": ["error", { "caseSensitive": true } ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "indent": [
-      "error",
-      2,
-      {
-        "SwitchCase": 1
-      }
-    ],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "linebreak-style": ["error", "unix"],
     "no-unused-vars": "warn",
-    "multiline-ternary": [
-      "error",
-      "always-multiline"
-    ],
-    "quotes": [
-      "error",
-      "double"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "space-before-blocks": [
-      "error",
-      "always"
-    ],
+    "multiline-ternary": ["error","always-multiline"],
+    "operator-linebreak": ["error", "before"],
+    "space-before-blocks": [ "error", "always" ],
     "space-before-function-paren": [
       "error",
       {
@@ -76,10 +58,7 @@
         "asyncArrow": "always"
       }
     ],
-    "strict": [
-      "error",
-      "safe"
-    ]
+    "strict": ["error", "safe"]
   },
   "overrides": [
     {

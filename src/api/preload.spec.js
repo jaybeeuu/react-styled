@@ -1,6 +1,6 @@
-import preloader from "./preloader";
+import preload from "./preload";
 
-describe("preloader", () => {
+describe("preload", () => {
   beforeEach(() => {
     window.fetch = jest.fn();
   });
@@ -8,7 +8,7 @@ describe("preloader", () => {
   it("requests each of the urls parsed to it.", () => {
     const urls = [1, "2", { id: "3" }];
 
-    preloader(...urls);
+    preload(...urls);
 
     expect(window.fetch.mock.calls).toEqual(urls.map(url => [url]));
   });

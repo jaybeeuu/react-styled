@@ -1,9 +1,12 @@
 {
     "images": {
-        "id": "1e8f4160-9203-454d-b0d2-87e74427bafd",
-        "url": "./englishBayPark.jpg",
-        "description": "This is English bay park, on the north west cornet of Vancouver.",
-        "tags": ["City", "Landscape", "Sea"]
+        "1e8f4160-9203-454d-b0d2-87e74427bafd": {
+            "id": "1e8f4160-9203-454d-b0d2-87e74427bafd",
+            "url": "images/englishBayPark.jpg",
+            "title": "English Bay Park",
+            "description": "This is English bay park, on the north west cornet of Vancouver.",
+            "tags": ["City", "Landscape", "Sea"]
+        }
     },
     "tags": ["City", "Landscape", "Sea"]
 }

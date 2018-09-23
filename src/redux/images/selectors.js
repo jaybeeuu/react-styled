@@ -1,3 +1,6 @@
-const getLocalState = (state) =>  state.simpleSomething;
+const getLocalState = (state) =>  state.images || {};
 
-export const getValue = (state) => getLocalState(state).value;
+export const getAllIds = (state) => Object.keys(getLocalState(state));
+export const getAllUrls = (state) => Object.values(getLocalState(state)).map((image) => image.url);
+
+export const getImage = (state, id) => getLocalState(state)[id] || null;

@@ -27,14 +27,15 @@ const serverConfig = require("../config/webpackDevServer.config");
 const devServer = new WebpackDevServer(compiler, serverConfig);
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
-const HOST = "0.0.0.0";
+const HOST = process.env.HOST || "0.0.0.0";
+const asFriendlyUrl = (host) => host === "0.0.0.0" ? "localhost" : host;
 
 devServer.listen(PORT, HOST, (err) => {
   if (err) {
     return console.log(err);
   }
 
-  console.log(chalk.cyan("Starting the development server...\n"));
+  console.log(chalk.cyan(`Starting the development server...\nhttp://${asFriendlyUrl(HOST)}:${PORT}/`));
 });
 
 ["SIGINT", "SIGTERM"].forEach(function (sig) {
