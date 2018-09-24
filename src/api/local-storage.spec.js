@@ -1,11 +1,12 @@
-import log from "./logger";
-
+import { when } from "jest-when";
 import { MockStorage } from "../../test/mock-storage";
-import { setLocalStorage, loadState, saveState }from "./local-storage";
-
 import defaultState from "./default-state.json";
+import { setLocalStorage, loadState, saveState }from "./local-storage";
+import { log } from "./logger";
 
 jest.mock("./logger");
+
+const STATE_KEY = "state";
 
 describe("local-storage", () => {
   let localStorage;
@@ -33,8 +34,8 @@ describe("local-storage", () => {
       expect(log).toHaveBeenCalledWith(error);
     });
 
-    it("returns default-state if no state is found.", () => {
-      localStorage.getItem.mockReturnValue(null);
+    it("returns default state if no state is found.", () => {
+      when(localStorage.getItem).calledWith(STATE_KEY).mockReturnValue(null);
 
       const state = loadState();
 
@@ -46,7 +47,7 @@ describe("local-storage", () => {
         id: "{the expected state}",
         child: { id: "A child object" }
       };
-      localStorage.getItem.mockReturnValue(JSON.stringify(expectedState));
+      when(localStorage.getItem).calledWith(STATE_KEY).mockReturnValue(JSON.stringify(expectedState));
 
       const state = loadState();
 
