@@ -37,7 +37,7 @@ describe("selectors", () => {
         3: { id: "image 3", url: "url 3" }
       }));
 
-      expect(allImages).toEqual(["url 1", "url 2", "url 3"]);url
+      expect(allImages).toEqual(["url 1", "url 2", "url 3"]);
     });
   });
 

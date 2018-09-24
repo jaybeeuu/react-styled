@@ -72,17 +72,8 @@
         "jest/globals": true
       },
       "rules": {
-        "jasmine/no-unsafe-spy": "off",
-        "jasmine/no-suite-dupes": [
-          "warn",
-          "branch"
-        ],
-        "jasmine/no-spec-dupes": [
-          "warn",
-          "branch"
-        ],
-        "jasmine/no-global-setup": "off",
-        "jest/prefer-to-have-length": "off"
+        "jasmine/no-spec-dupes": ["warn", "branch"],
+        "jasmine/no-suite-dupes": ["warn", "branch"]
       }
     },
     {
