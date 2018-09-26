@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-const imageReducer = (state = {}, { type, ...payload }) => {
+const imageReducer = (state = {}, { type, ...payload }= {}) => {
   switch (type) {
     default: return state;
   }
 };
 
-export default (state = {}, { type, ...payload }) => {
+export default (state = {}, { type, ...payload } = {}) => {
   switch (type) {
     default:
       return payload.id ? (

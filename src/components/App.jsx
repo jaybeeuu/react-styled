@@ -1,12 +1,13 @@
 import React from "react";
-import Images from "./images/images";
+import Carousel from "./carousel/carousel";
 
 import "./_app.scss";
 
 const App = () => (
   <div className="container">
-    <Images />
+    <Carousel />
   </div>
 );
+
 
 export default App;
