@@ -37,11 +37,19 @@ class Image extends Component {
     } = this.props;
 
     return (
-      <div className={classNames(cssClasses.root, className)} data-image-id={imageId} onClick={this.toggleImageDetailsVisible} >
+      <div
+        className={classNames(cssClasses.root, className)}
+        data-image-id={imageId}
+      >
         { imageDetailsVisible ? (
           <h1 className={cssClasses.title}>{title}</h1>
         ) : null }
-        <img className={cssClasses.image} src={url} alt={title} />
+        <img
+          className={cssClasses.image}
+          src={url}
+          alt={title}
+          onClick={this.toggleImageDetailsVisible}
+        />
         { imageDetailsVisible ? (
           <div className={cssClasses.details}>
             <p className={cssClasses.description}>{description}</p>

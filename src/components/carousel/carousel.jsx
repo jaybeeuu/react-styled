@@ -46,11 +46,21 @@ class Carousel extends Component {
     return (
       <div className={classNames(className, cssClasses.root)} >
         { !isFirstImage ? (
-          <button className={classNames(cssClasses.navButton, cssClasses.navButtonLeft)} onClick={this.selectPreviousImage.bind(this)}>{"<"}</button>
+          <button
+            className={classNames(cssClasses.navButton, cssClasses.navButtonLeft)}
+            onClick={this.selectPreviousImage.bind(this)}
+          >
+            {"<"}
+          </button>
         ) : null }
         <Image className={cssClasses.image} imageId={selectedImageId} />
         { !isLastImage ? (
-          <button className={classNames(cssClasses.navButton, cssClasses.navButtonRight)} onClick={this.selectNextImage.bind(this)}>{">"}</button>
+          <button
+            className={classNames(cssClasses.navButton, cssClasses.navButtonRight)}
+            onClick={this.selectNextImage.bind(this)}
+          >
+            {">"}
+          </button>
         ) : null }
       </div>
     );

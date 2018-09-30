@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const paths = require("./paths");
 
+const env = require("./env")();
+
 module.exports = {
   mode: "development",
   devtool: "cheap-module-source-map",
@@ -84,7 +86,7 @@ module.exports = {
       inject: true,
       template: paths.appHtml,
     }),
-    new webpack.DefinePlugin(process.env),
+    new webpack.DefinePlugin(env.stringified),
     new webpack.NoEmitOnErrorsPlugin(),
     new CaseSensitivePathsPlugin()
   ],
