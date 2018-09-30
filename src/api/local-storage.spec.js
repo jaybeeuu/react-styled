@@ -1,8 +1,8 @@
 import { when } from "jest-when";
 import { MockStorage } from "../../test/mock-storage";
 import defaultState from "./default-state.json";
-import { setLocalStorage, loadState, saveState }from "./local-storage";
-import { log } from "./logger";
+import { setLocalStorage, loadState, saveState } from "./local-storage";
+import log from "./logger";
 
 jest.mock("./logger");
 

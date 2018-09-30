@@ -7,6 +7,8 @@ import { setSelectedImageId } from "../../redux/ui/actions";
 import Image from "./image";
 import preload from "../../api/preload";
 
+import "./_carousel.scss";
+
 class Images extends Component {
   static propTypes = {
     imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
