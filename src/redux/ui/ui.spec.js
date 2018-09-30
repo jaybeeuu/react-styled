@@ -9,25 +9,33 @@ const localStateAsGlobal = (localState = {}) => ({
 describe("ui", () => {
   describe("reducer", () => {
     it("has the expected default value of is editing", () => {
-      const defaultState = reducer();
+      const defaultGlobalState = localStateAsGlobal(reducer());
 
-      expect(defaultState.isEditing).toEqual(false);
+      expect(selectors.getIsEditing(defaultGlobalState)).toEqual(false);
     });
 
     it("has the expected default value of selectedImageId", () => {
-      const defaultState = reducer();
+      const defaultGlobalState = localStateAsGlobal(reducer());
 
-      expect(defaultState.selectedImageId).toEqual(0);
+      expect(selectors.getSelectedImageId(defaultGlobalState)).toEqual(0);
     });
 
     it("has the expected default value of imageDetailsVisible", () => {
-      const defaultState = reducer();
+      const defaultGlobalState = localStateAsGlobal(reducer());
 
-      expect(defaultState.imageDetailsVisible).toEqual(false);
+      expect(selectors.getImageDetailsVisible(defaultGlobalState)).toEqual(false);
     });
   });
 
   describe("actions", () => {
+    describe("setIsEditting", () => {
+      it("updates the correct part of the store.", () => {
+        const finalState = reducer({ isEditing: false }, actions.setIsEditing(true));
+
+        expect(selectors.getIsEditing(localStateAsGlobal(finalState))).toBe(true);
+      });
+    });
+
     describe("setSelectedImageId", () => {
       it("updates the correct part of the store.", () => {
         const finalState = reducer({ selectedImageId: 0 }, actions.setSelectedImageId(1));
@@ -38,7 +46,7 @@ describe("ui", () => {
 
     describe("setImageDetailsVisible", () => {
       it("updates the correct part of the store.", () => {
-        const finalState = reducer({ setImageDetailsVisible: false }, actions.setImageDetailsVisible(true));
+        const finalState = reducer({ imageDetailsVisible: false }, actions.setImageDetailsVisible(true));
 
         expect(selectors.getImageDetailsVisible(localStateAsGlobal(finalState))).toBe(true);
       });

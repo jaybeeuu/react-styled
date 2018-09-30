@@ -1,0 +1,16 @@
+@import "../../styles/constants.scss";
+
+.image-form {
+    padding: $block-padding;
+
+    &__label, &__field {
+        display: inline-block;
+        padding: $block-padding;
+        width: 20rem;
+    }
+
+    textarea {
+        resize: none;
+        height: 10rem;
+    }
+}

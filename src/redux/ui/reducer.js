@@ -8,6 +8,7 @@ const defaultState = {
 };
 
 const handlers = {
+  [actionTypes.setIsEditing]: (state, { isEditing }) => ({ ... state, isEditing }),
   [actionTypes.setImageDetailsVisible]: (state, { imageDetailsVisible }) => ({ ... state, imageDetailsVisible }),
   [actionTypes.setSelectedImageId]: (state, { selectedImageId }) => ({ ... state, selectedImageId })
 };

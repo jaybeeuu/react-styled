@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as fromImages from "../../../redux/images/selectors";
-import { setImageDetailsVisible } from "../../../redux/ui/actions";
+import { setIsEditing, setImageDetailsVisible } from "../../../redux/ui/actions";
 import * as fromUi from "../../../redux/ui/selectors";
+import IconButton, { icons } from "../../common/icon-button";
 import cssClasses from "./css-classes";
 
 import "./_styles.scss";
@@ -14,8 +15,10 @@ class Image extends Component {
     className: PropTypes.string,
     description: PropTypes.string,
     imageDetailsVisible: PropTypes.bool.isRequired,
-    setImageDetailsVisible: PropTypes.func.isRequired,
     imageId: PropTypes.number.isRequired,
+    isEditing: PropTypes.bool.isRequired,
+    setImageDetailsVisible: PropTypes.func.isRequired,
+    setIsEditing: PropTypes.func.isRequired,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string,
     url: PropTypes.string.isRequired
@@ -23,6 +26,10 @@ class Image extends Component {
 
   toggleImageDetailsVisible = () => {
     this.props.setImageDetailsVisible(!this.props.imageDetailsVisible);
+  };
+
+  toggleIsEditing = () => {
+    this.props.setIsEditing(!this.props.isEditing);
   };
 
   render() {
@@ -42,7 +49,14 @@ class Image extends Component {
         data-image-id={imageId}
       >
         { imageDetailsVisible ? (
-          <h1 className={cssClasses.title}>{title}</h1>
+          <div className={cssClasses.title}>
+            <h1>{title}</h1>
+            <IconButton
+              className={cssClasses.editButton}
+              icon={icons.EDIT}
+              onClick={this.toggleIsEditing}
+            />
+          </div>
         ) : null }
         <img
           className={cssClasses.image}
@@ -67,11 +81,13 @@ class Image extends Component {
 
 const mapStateToProps = (state, { imageId }) => ({
   ...fromImages.getImage(state, imageId),
+  isEditing: fromUi.getIsEditing(state),
   imageDetailsVisible: fromUi.getImageDetailsVisible(state)
 });
 
 const mapDispatchToProps = ({
-  setImageDetailsVisible
+  setImageDetailsVisible,
+  setIsEditing
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Image);

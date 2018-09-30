@@ -6,7 +6,7 @@ export const createReducer = (
   action = {}
 ) => handlers.hasOwnProperty(action.type) ? handlers[action.type](state, action) : state;
 
-export const createCollectionReducer = (
+const createCollectionReducer = (
   defaultCollectionState,
   collectionHandlers,
   defaultRecordState,
@@ -26,3 +26,29 @@ export const createCollectionReducer = (
     return state;
   }
 };
+
+export const createObjectReducer = (
+  collectionHandlers,
+  defaultRecordState,
+  recordHandlers,
+  recordIdentifierActionPropName
+) => createCollectionReducer(
+  {},
+  collectionHandlers,
+  defaultRecordState,
+  recordHandlers,
+  recordIdentifierActionPropName
+);
+
+export const createArrayReducer = (
+  collectionHandlers,
+  defaultRecordState,
+  recordHandlers,
+  recordIdentifierActionPropName
+) => createCollectionReducer(
+  [],
+  collectionHandlers,
+  defaultRecordState,
+  recordHandlers,
+  recordIdentifierActionPropName
+);
