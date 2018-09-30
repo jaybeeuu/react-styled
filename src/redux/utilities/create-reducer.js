@@ -19,7 +19,10 @@ const createCollectionReducer = (
   const { type, [recordIdentifierActionPropName]: recordId } = action;
 
   if(recordHandlers.hasOwnProperty(type)) {
-    return recordHandlers(state[recordId] || defaultRecordState, action);
+    return {
+      ...state,
+      [recordId]: recordHandlers[type](state[recordId] || defaultRecordState, action)
+    };
   } else if (collectionHandlers.hasOwnProperty(type)) {
     return collectionHandlers[type](state, action);
   } else {

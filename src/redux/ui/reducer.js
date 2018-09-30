@@ -1,4 +1,4 @@
-import { createReducer } from "../create-reducer";
+import { createReducer } from "../utilities/create-reducer";
 import { actionTypes } from "./actions";
 
 const defaultState = {

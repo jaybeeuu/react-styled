@@ -1,15 +1,20 @@
-// eslint-disable-next-line no-unused-vars
-const imageReducer = (state = {}, { type, ...payload }= {}) => {
-  switch (type) {
-    default: return state;
-  }
+import { createArrayReducer } from "../utilities/create-reducer";
+import { actionTypes } from "./actions";
+
+const defaultRecordState = {};
+
+const recordHandlers = {
+  [actionTypes.setTitle]: (state, { title }) => ({ ...state, title }),
+  [actionTypes.setDescription]: (state, { description }) => ({ ...state, description }),
+  [actionTypes.setTags]: (state, { tags }) => ({ ...state, tags })
 };
 
-export default (state = {}, { type, ...payload } = {}) => {
-  switch (type) {
-    default:
-      return payload.id ? (
-        { ...state, [payload.id]: imageReducer(state[payload.id], { type, ...payload }) }
-      ) : state;
-  }
+const collectionHandlers = {
 };
+
+export default createArrayReducer(
+  collectionHandlers,
+  defaultRecordState,
+  recordHandlers,
+  "imageId"
+);

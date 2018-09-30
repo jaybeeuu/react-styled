@@ -1,4 +1,4 @@
-const getLocalState = (state) =>  state.images || {};
+const getLocalState = (state) =>  state.images || [];
 
 export const getAllUrls = (state) => Object.values(getLocalState(state)).map((image) => image.url);
 

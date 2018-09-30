@@ -1,7 +1,11 @@
+import actionTypePrefixer from "../utilities/action-type-prefixer";
+
+const prefixActionType = actionTypePrefixer("ui");
+
 export const actionTypes = {
-  setIsEditing: "ui/SET_IS_EDITING",
-  setImageDetailsVisible: "ui/SET_IMAGE_DETAILS_VISIBLE",
-  setSelectedImageId: "ui/SET_SELECTED_IMAGE_ID"
+  setIsEditing: prefixActionType("SET_IS_EDITING"),
+  setImageDetailsVisible: prefixActionType("SET_IMAGE_DETAILS_VISIBLE"),
+  setSelectedImageId: prefixActionType("SET_SELECTED_IMAGE_ID")
 };
 
 export const setIsEditing = (isEditing) => ({

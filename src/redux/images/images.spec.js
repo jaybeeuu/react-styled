@@ -1,7 +1,8 @@
 import * as fromImages from "./selectors";
+import * as actions from "./actions";
 import reducer from "./reducer";
 
-const localStateAsGlobal = (localState = {}) => ({
+const localStateAsGlobal = (localState = []) => ({
   images: localState
 });
 
@@ -10,7 +11,7 @@ describe("images", () => {
     it("has the expected default state", () => {
       const defaultState = reducer();
 
-      expect(defaultState).toEqual({});
+      expect(defaultState).toEqual([]);
     });
   });
 
@@ -51,6 +52,32 @@ describe("images", () => {
 
         expect(image).toEqual({ id: "image 1" });
       });
+    });
+  });
+
+  describe("actions", () => {
+    describe("setTitle", () => {
+      it("updates the correct part of the store.", () => {
+        const finalState = reducer([{ title: "unchanged" }], actions.setTitle(0, "{new title}"));
+
+        expect(fromImages.getImage(localStateAsGlobal(finalState), 0)).toEqual({ title: "{new title}" });
+      });
+    });
+
+    describe("setDescription", () => {
+      it("updates the correct part of the store.", () => {
+        const finalState = reducer([{ description: "unchanged" }], actions.setDescription(0, "{new description}"));
+
+        expect(fromImages.getImage(localStateAsGlobal(finalState), 0)).toEqual({ description: "{new description}" });
+      });
+    });
+  });
+
+  describe("setTags", () => {
+    it("updates the correct part of the store.", () => {
+      const finalState = reducer([{ tags: "unchanged" }], actions.setTags(0, "{new tags}"));
+
+      expect(fromImages.getImage(localStateAsGlobal(finalState), 0)).toEqual({ tags: "{new tags}" });
     });
   });
 });
