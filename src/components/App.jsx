@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from "./carousel/carousel";
 
-import "./_app.scss";
+import "./_styles.scss";
 
 const App = () => (
   <div className="container">

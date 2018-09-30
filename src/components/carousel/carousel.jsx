@@ -1,16 +1,19 @@
 import PropTypes from "prop-types";
+import classNames from "classnames";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as fromImages from "../../redux/images/selectors";
-import * as fromUi from "../../redux/ui/selectors";
-import { setSelectedImageId } from "../../redux/ui/actions";
-import Image from "./image";
 import preload from "../../api/preload";
+import * as fromImages from "../../redux/images/selectors";
+import { setSelectedImageId } from "../../redux/ui/actions";
+import * as fromUi from "../../redux/ui/selectors";
+import cssClasses from "./css-classes";
+import Image from "./image/image";
 
-import "./_carousel.scss";
+import "./_styles.scss";
 
-class Images extends Component {
+class Carousel extends Component {
   static propTypes = {
+    className: PropTypes.string,
     imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
     selectImage: PropTypes.func.isRequired,
     selectedImageId: PropTypes.number.isRequired
@@ -31,17 +34,24 @@ class Images extends Component {
   }
 
   render() {
-    const { selectedImageId, imageUrls } = this.props;
+    const {
+      className,
+      // imageUrls,
+      selectedImageId
+    } = this.props;
+
+    const isFirstImage = false; // !selectedImageId;
+    const isLastImage = false; // selectedImageId !== imageUrls.length - 1;
 
     return (
-      <div>
-        {selectedImageId ? (
-          <button onClick={this.selectPreviousImage.bind(this)}>{"<"}</button>
-        ) : null}
-        <Image imageId={selectedImageId} />
-        {selectedImageId === imageUrls.length - 1? (
-          <button onClick={this.selectNextImage.bind(this)}>{">"}</button>
-        ) : null}
+      <div className={classNames(className, cssClasses.root)} >
+        { !isFirstImage ? (
+          <button className={classNames(cssClasses.navButton, cssClasses.navButtonLeft)} onClick={this.selectPreviousImage.bind(this)}>{"<"}</button>
+        ) : null }
+        <Image className={cssClasses.image} imageId={selectedImageId} />
+        { !isLastImage ? (
+          <button className={classNames(cssClasses.navButton, cssClasses.navButtonRight)} onClick={this.selectNextImage.bind(this)}>{">"}</button>
+        ) : null }
       </div>
     );
   }
@@ -56,4 +66,4 @@ const mapDispatchToProps = {
   setSelectedImageId
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Images);
+export default connect(mapStateToProps, mapDispatchToProps)(Carousel);
