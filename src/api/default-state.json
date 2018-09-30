@@ -1,9 +1,22 @@
 {
-    "images": [{
-        "url": "images/englishBayPark.jpg",
-        "title": "English Bay Park",
-        "description": "This is English bay park, on the north west cornet of Vancouver.",
-        "tags": ["City", "Landscape", "Sea"]
-    }],
-    "tags": ["City", "Landscape", "Sea"]
+    "images": [
+        {
+            "url": "images/englishBayPark.jpg",
+            "title": "English Bay Park",
+            "description": "This is English bay park, on the north west cornet of Vancouver.",
+            "tags": ["City", "Landscape", "Sea"]
+        },
+        {
+            "url": "images/fagus.jpg",
+            "title": "Fagus",
+            "description": "This tiny relative of the mighty English beech can be found in parts of Tasmania. It's presence is believed to be evidence for continental drift.",
+            "tags": ["Wild", "Trees", "Detail"]
+        },
+        {
+            "url": "images/lionsGateBridge.jpg",
+            "title": "Lions Gate Bridge",
+            "description": "The Lions Gate Bridge, opened in 1938, officially known as the First Narrows Bridge, is a suspension bridge that crosses the first narrows of Burrard Inlet and connects the City of Vancouver, British Columbia, to the North Shore municipalities of the District of North Vancouver, the City of North Vancouver, and West Vancouver. The term \"Lions Gate\" refers to The Lions, a pair of mountain peaks north of Vancouver. Northbound traffic on the bridge heads in their general direction. A pair of cast concrete lions, designed by sculptor Charles Marega, were placed on either side of the south approach to the bridge in January 1939.",
+            "tags": ["City", "Landscape", "Sea"]
+        }
+    ]
 }

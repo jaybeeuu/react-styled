@@ -19,14 +19,28 @@ describe("ui", () => {
 
       expect(defaultState.selectedImageId).toEqual(0);
     });
+
+    it("has the expected default value of imageDetailsVisible", () => {
+      const defaultState = reducer();
+
+      expect(defaultState.imageDetailsVisible).toEqual(false);
+    });
   });
 
   describe("actions", () => {
     describe("setSelectedImageId", () => {
-      it("updates teh correct part of the store.", () => {
+      it("updates the correct part of the store.", () => {
         const finalState = reducer({ selectedImageId: 0 }, actions.setSelectedImageId(1));
 
         expect(selectors.getSelectedImageId(localStateAsGlobal(finalState))).toBe(1);
+      });
+    });
+
+    describe("setImageDetailsVisible", () => {
+      it("updates the correct part of the store.", () => {
+        const finalState = reducer({ setImageDetailsVisible: false }, actions.setImageDetailsVisible(true));
+
+        expect(selectors.getImageDetailsVisible(localStateAsGlobal(finalState))).toBe(true);
       });
     });
   });

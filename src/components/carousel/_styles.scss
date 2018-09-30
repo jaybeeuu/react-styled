@@ -12,12 +12,11 @@
         cursor: pointer;
         outline: none;
         z-index: 1;
-
-        color: transparent;
-        background: transparent;
+        @include text-overlay;
+        opacity: 0;
 
         &:hover{
-            @include text-overlay;
+            opacity: 1;
         }
 
         position: absolute;

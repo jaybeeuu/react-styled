@@ -1,29 +1,29 @@
 import { when } from "jest-when";
 import { MockStorage } from "../../test/mock-storage";
 import defaultState from "./default-state.json";
-import { setLocalStorage, loadState, saveState } from "./local-storage";
+import { setStorage, loadState, saveState } from "./persistence";
 import log from "./logger";
 
 jest.mock("./logger");
 
 const STATE_KEY = "state";
 
-describe("local-storage", () => {
-  let localStorage;
+describe("persistence ", () => {
+  let storage;
 
   beforeEach(() => {
-    localStorage = new MockStorage();
-    setLocalStorage(localStorage);
+    storage = new MockStorage();
+    setStorage(storage);
   });
 
   afterEach(() => {
-    setLocalStorage();
+    setStorage();
   });
 
   describe("loadState", () => {
     it("Logs errors and returns undefined.", () => {
       const error = new Error();
-      localStorage.getItem.mockImplementation(() => {
+      storage.getItem.mockImplementation(() => {
         throw error;
       });
 
@@ -35,7 +35,7 @@ describe("local-storage", () => {
     });
 
     it("returns default state if no state is found.", () => {
-      when(localStorage.getItem).calledWith(STATE_KEY).mockReturnValue(null);
+      when(storage.getItem).calledWith(STATE_KEY).mockReturnValue(null);
 
       const state = loadState();
 
@@ -47,7 +47,7 @@ describe("local-storage", () => {
         id: "{the expected state}",
         child: { id: "A child object" }
       };
-      when(localStorage.getItem).calledWith(STATE_KEY).mockReturnValue(JSON.stringify(expectedState));
+      when(storage.getItem).calledWith(STATE_KEY).mockReturnValue(JSON.stringify(expectedState));
 
       const state = loadState();
 
@@ -58,7 +58,7 @@ describe("local-storage", () => {
   describe("saveState", () => {
     it("Logs errors.", () => {
       const error = new Error();
-      localStorage.setItem.mockImplementation(() => {
+      storage.setItem.mockImplementation(() => {
         throw error;
       });
 
@@ -76,8 +76,8 @@ describe("local-storage", () => {
 
       saveState(state);
 
-      expect(localStorage.setItem).toBeCalledTimes(1);
-      expect(localStorage.setItem).toBeCalledWith("state", JSON.stringify(state));
+      expect(storage.setItem).toBeCalledTimes(1);
+      expect(storage.setItem).toBeCalledWith("state", JSON.stringify(state));
     });
   });
 });

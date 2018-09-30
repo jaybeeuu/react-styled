@@ -2,11 +2,13 @@ import { createReducer } from "../create-reducer";
 import { actionTypes } from "./actions";
 
 const defaultState = {
-  selectedImageId: 0,
-  isEditing: false
+  imageDetailsVisible: false,
+  isEditing: false,
+  selectedImageId: 0
 };
 
 const handlers = {
+  [actionTypes.setImageDetailsVisible]: (state, { imageDetailsVisible }) => ({ ... state, imageDetailsVisible }),
   [actionTypes.setSelectedImageId]: (state, { selectedImageId }) => ({ ... state, selectedImageId })
 };
 

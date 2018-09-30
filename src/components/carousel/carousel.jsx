@@ -15,7 +15,7 @@ class Carousel extends Component {
   static propTypes = {
     className: PropTypes.string,
     imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
-    selectImage: PropTypes.func.isRequired,
+    setSelectedImageId: PropTypes.func.isRequired,
     selectedImageId: PropTypes.number.isRequired
   };
 
@@ -24,24 +24,24 @@ class Carousel extends Component {
   }
 
   selectNextImage() {
-    const { selectImage, selectedImageId } = this.props;
-    selectImage(selectedImageId + 1);
+    const { setSelectedImageId, selectedImageId } = this.props;
+    setSelectedImageId(selectedImageId + 1);
   }
 
   selectPreviousImage() {
-    const { selectImage, selectedImageId } = this.props;
-    selectImage(selectedImageId - 1);
+    const { setSelectedImageId, selectedImageId } = this.props;
+    setSelectedImageId(selectedImageId - 1);
   }
 
   render() {
     const {
       className,
-      // imageUrls,
+      imageUrls,
       selectedImageId
     } = this.props;
 
-    const isFirstImage = false; // !selectedImageId;
-    const isLastImage = false; // selectedImageId !== imageUrls.length - 1;
+    const isFirstImage = !selectedImageId;
+    const isLastImage = selectedImageId === imageUrls.length - 1;
 
     return (
       <div className={classNames(className, cssClasses.root)} >
