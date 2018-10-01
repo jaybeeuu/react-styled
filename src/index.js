@@ -1,23 +1,3 @@
-// PACKAGE DEPENDENCIES
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
+import start from "./main";
 
-import { loadState, saveState } from "./api/persistence";
-import App from "./components/App";
-import debounce from "./utilities/debounce";
-import configureStore from "./redux/configure-store";
-
-const persistedState = loadState();
-
-const store = configureStore(persistedState);
-
-store.subscribe(debounce(() => {
-  saveState(store.getState());
-}, 500));
-
-ReactDOM.render((
-  <Provider store={store}>
-    <App />
-  </Provider>
-), document.getElementById("app"));
+start();
