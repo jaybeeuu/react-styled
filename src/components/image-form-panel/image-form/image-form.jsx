@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as fromImages from "../../../redux/images/selectors";
 import { setDescription, setTags, setTitle } from "../../../redux/images/actions";
+import { setIsEditing } from "../../../redux/ui/actions";
 import cssClasses from "./css-classes";
 
 import "./_styles.scss";
@@ -14,7 +15,8 @@ class ImageForm extends Component {
     title: PropTypes.string,
     setDescription: PropTypes.func.isRequired,
     setTags: PropTypes.func.isRequired,
-    setTitle: PropTypes.func.isRequired
+    setTitle: PropTypes.func.isRequired,
+    setIsEditing: PropTypes.func.isRequired
   };
 
   onDescriptionChanged = (e) => {
@@ -25,10 +27,11 @@ class ImageForm extends Component {
     this.props.setTags(e.target.value.split(","));
   };
 
-
   onTitleChanged = (e) => {
     this.props.setTitle(e.target.value);
   };
+
+  onDoneClicked = () => this.props.setIsEditing(false);
 
   render() {
     const {
@@ -38,7 +41,7 @@ class ImageForm extends Component {
     } = this.props;
     return (
       <form className={cssClasses.root}>
-        <p>
+        <p className={cssClasses.fieldGroup}>
           <label
             className={cssClasses.label}
             htmlFor="image-title"
@@ -52,7 +55,7 @@ class ImageForm extends Component {
             onChange={this.onTitleChanged}
           />
         </p>
-        <p>
+        <p className={cssClasses.fieldGroup}>
           <label
             className={cssClasses.label}
             htmlFor="description"
@@ -66,7 +69,7 @@ class ImageForm extends Component {
             onChange={this.onDescriptionChanged}
           />
         </p>
-        <p>
+        <p className={cssClasses.fieldGroup}>
           <label
             className={cssClasses.label}
             htmlFor="tags"
@@ -80,6 +83,14 @@ class ImageForm extends Component {
             onChange={this.onTagsChanged}
           />
         </p>
+        <p className={cssClasses.fieldGroup}>
+          <button
+            className={cssClasses.button}
+            onClick={this.onDoneClicked}
+          >
+            Done
+          </button>
+        </p>
       </form>
     );
   }
@@ -92,7 +103,8 @@ const mapStateToProps = (state, { imageId }) => ({
 const mapDispatchToProps = (dispatch, { imageId }) => ({
   setDescription: (description) => dispatch(setDescription(imageId, description)),
   setTags: (tags) => dispatch(setTags(imageId, tags)),
-  setTitle: (title) => dispatch(setTitle(imageId, title))
+  setTitle: (title) => dispatch(setTitle(imageId, title)),
+  setIsEditing: (isEditing) => dispatch(setIsEditing(isEditing))
 });
 
 

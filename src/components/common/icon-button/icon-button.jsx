@@ -1,13 +1,16 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
+import cssClasses from "./css-classes";
+
+import "./_styles.scss";
 
 const IconButton = ({ className, icon, onClick }) => (
   <button
-    className={classNames(className, "material-icons")}
+    className={classNames(cssClasses.root, className, "material-icons")}
     onClick={onClick}
   >
-    {icon}
+    <span className={cssClasses.icon}>{icon}</span>
   </button>
 );
 

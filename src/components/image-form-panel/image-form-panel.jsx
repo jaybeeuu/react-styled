@@ -3,12 +3,9 @@ import React from "react";
 import { connect } from "react-redux";
 import * as fromUi from "../../redux/ui/selectors";
 import ImageForm from "./image-form/image-form" ;
-import cssClasses from "./css-classes";
-
-import "./_styles.scss";
 
 const ImageFormPanel = ({ selectedImageId, isEditing }) => (
-  <div className={cssClasses}>
+  <div>
     { isEditing ? (
       <ImageForm imageId={selectedImageId}/>
     ) : null }

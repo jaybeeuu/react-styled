@@ -10,16 +10,23 @@ html, body, #app, .app-container {
     color: $white;
 }
 
-
-textarea {
-    font-family: 'Raleway', sans-serif;
-}
-
 .app-container {
     display: flex;
     flex-direction: row;
 
     &__carousel-panel {
         flex: 1 1 auto;
+    }
+
+    textarea, button:not(.material-icons) {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    textarea, input, p {
+        font-size: 1em;
+    }
+
+    label, button:not(.material-icons) {
+        font-size: 1.1em;
     }
 }

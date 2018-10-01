@@ -1,16 +1,33 @@
+@import "../../styles/colours.scss";
 @import "../../styles/constants.scss";
 
 .image-form {
     padding: $block-padding;
 
-    &__label, &__field {
-        display: inline-block;
+    &__field-group {
+        width: 20em;
         padding: $block-padding;
-        width: 20rem;
+    }
+
+    &__label, &__field {
+        box-sizing: border-box;
+        padding: $inline-padding;
+        display: block;
+        width: 100%;
+        border: none;
     }
 
     textarea {
         resize: none;
         height: 10rem;
+    }
+
+    &__button {
+        background: $white;
+        border: none;
+        outline: none;
+        font-Size: 1em;
+        padding: $inline-padding;
+        cursor: pointer;
     }
 }

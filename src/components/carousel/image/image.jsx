@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import * as fromImages from "../../../redux/images/selectors";
 import { setIsEditing, setImageDetailsVisible } from "../../../redux/ui/actions";
 import * as fromUi from "../../../redux/ui/selectors";
-import IconButton, { icons } from "../../common/icon-button";
+import IconButton, { icons } from "../../common/icon-button/icon-button";
 import cssClasses from "./css-classes";
 
 import "./_styles.scss";
