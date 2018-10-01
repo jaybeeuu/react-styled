@@ -7,7 +7,7 @@ import App from "./components/App";
 import debounce from "./utilities/debounce";
 import configureStore from "./redux/configure-store";
 
-import { start } from "./main";
+import start from "./main";
 
 jest.unmock("./index");
 

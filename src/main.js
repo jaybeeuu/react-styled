@@ -7,7 +7,7 @@ import App from "./components/App";
 import configureStore from "./redux/configure-store";
 import debounce from "./utilities/debounce";
 
-export const start = () => {
+const start = () => {
   const persistedState = loadState();
 
   const store = configureStore(persistedState);
@@ -22,3 +22,5 @@ export const start = () => {
     </Provider>
   ), document.getElementById("app"));
 };
+
+export default start;
