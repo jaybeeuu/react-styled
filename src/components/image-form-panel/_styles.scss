@@ -4,7 +4,8 @@
 .image-form-panel {
     &__form {
         @include transition-complex;
-        display: inline-block;
+        width: 20em;
+
         &-enter
         &-exit-active,
         &-exit-done {
