@@ -4,10 +4,17 @@ module.exports = {
   collectCoverageFrom: [
     "src/**/*.{js,jsx}"
   ],
+  setupTestFrameworkScriptFile: "<rootDir>/test/setup-enzyme",
+  moduleFileExtensions: [
+    "js",
+    "json",
+    "jsx"
+  ],
+  resetMocks: true,
+  testEnvironment: "jsdom",
   testMatch: [
     "<rootDir>/(src|spec)/**/?(*.)([Ss]pec|[Tt]est).{js,jsx}"
   ],
-  testEnvironment: "jsdom",
   testURL: "http://localhost",
   transform: {
     "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
@@ -16,11 +23,5 @@ module.exports = {
   },
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-  ],
-  moduleFileExtensions: [
-    "js",
-    "json",
-    "jsx"
-  ],
-  resetMocks: true
+  ]
 };
