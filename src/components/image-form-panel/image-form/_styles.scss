@@ -5,7 +5,8 @@
     padding: $block-padding;
 
     &__field-group {
-        width: 20em;
+        box-sizing: border-box;
+        width: 100%;
         padding: $block-padding;
     }
 

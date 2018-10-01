@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -10,6 +11,7 @@ import "./_styles.scss";
 
 class ImageForm extends Component {
   static propTypes = {
+    className: PropTypes.string,
     description: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string,
@@ -35,12 +37,13 @@ class ImageForm extends Component {
 
   render() {
     const {
+      className,
       title,
       description,
       tags
     } = this.props;
     return (
-      <form className={cssClasses.root}>
+      <form className={classNames(cssClasses.root, className)}>
         <p className={cssClasses.fieldGroup}>
           <label
             className={cssClasses.label}

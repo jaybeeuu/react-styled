@@ -1,0 +1,20 @@
+@import "../styles/colours.scss";
+@import "../styles/mixins.scss";
+
+.image-form-panel {
+    &__form {
+        @include transition-complex;
+        display: inline-block;
+        &-enter
+        &-exit-active,
+        &-exit-done {
+            width: 0;
+        }
+
+        &-enter-active,
+        &-enter-done,
+        &-exit-done {
+            width: 20em;
+        }
+    }
+}

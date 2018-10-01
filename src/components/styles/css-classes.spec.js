@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import cssClass from "./cssClass";
+import cssClass from "./css-class";
 
 describe("cssClass", () => {
   it("returns a function which returns the class supplied.", () => {

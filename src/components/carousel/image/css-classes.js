@@ -1,4 +1,4 @@
-import cssClass from "../../styles/cssClass";
+import cssClass from "../../styles/css-class";
 
 const rootCssClass = cssClass("image");
 
