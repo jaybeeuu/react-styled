@@ -4,13 +4,40 @@ import "../../../../test/setup-enzyme";
 import IconButton from "./icon-button";
 
 describe("icon-button", () => {
-  const defaultProps = {
-    className: "{prop_className}",
-    icon: "prop_className",
-    onClick: function propOnClick() {}
-  };
+  const getIconButton = ({
+    className = "{prop_className}",
+    icon = "{prop_icon}",
+    onClick = jest.fn().mockName("{prop_onClick}")
+  } = {}) => shallow(
+    <IconButton
+      className={className}
+      icon={icon}
+      onClick={onClick}
+    />
+  );
 
-  it("shallow renders", () => {
-    shallow(<IconButton {...defaultProps} />);
+  it("calls the onClick function when the element is clicked.", () => {
+    const onClick = jest.fn().mockName("{prop_onClick}");
+    const iconButton = getIconButton({ onClick });
+    const event = { id: "{event}" };
+    iconButton.simulate("click", event);
+
+    expect(onClick).toHaveBeenCalledWith(event);
+  });
+
+  it("renders the icon prop into a span.", () => {
+    const icon = "{prop_icon}";
+    const iconButton = getIconButton({ icon });
+
+    const iconElement = iconButton.find(`.material-icons[children="${icon}"]`);
+
+    expect(iconElement).not.toBeNull();
+  });
+
+  it("renders the className prop into the to level element.", () => {
+    const className = "{prop_className}";
+    const iconButton = getIconButton({ className });
+
+    expect(iconButton.hasClass(className)).toBe(true);
   });
 });
