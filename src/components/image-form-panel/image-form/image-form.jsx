@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as fromImages from "../../../redux/images/selectors";
 import { setDescription, setTags, setTitle } from "../../../redux/images/actions";
 import { setIsEditing } from "../../../redux/ui/actions";
+import IconButton, { icons } from "../../common/icon-button/icon-button";
 import cssClasses from "./css-classes";
 
 import "./_styles.scss";
@@ -33,7 +34,7 @@ class ImageForm extends Component {
     this.props.setTitle(event.target.value);
   };
 
-  onDoneClicked = (event) => {
+  onCloseClicked = (event) => {
     this.props.setIsEditing(false);
     event.preventDefault();
   };
@@ -47,6 +48,11 @@ class ImageForm extends Component {
     } = this.props;
     return (
       <form className={classNames(cssClasses.root, className)}>
+        <IconButton
+          className={cssClasses.closeButton}
+          icon={icons.CHEVRON_RIGHT}
+          onClick={this.onCloseClicked}
+        />
         <p className={cssClasses.fieldGroup}>
           <label
             className={cssClasses.label}
@@ -88,14 +94,6 @@ class ImageForm extends Component {
             value={tags}
             onChange={this.onTagsChanged}
           />
-        </p>
-        <p className={cssClasses.fieldGroup}>
-          <button
-            className={cssClasses.button}
-            onClick={this.onDoneClicked}
-          >
-            Done
-          </button>
         </p>
       </form>
     );

@@ -7,7 +7,7 @@ const cssClasses = {
   fieldGroup: rootCssClass.element("field-group"),
   label: rootCssClass.element("label"),
   field: rootCssClass.element("field"),
-  button: rootCssClass.element("button")
+  closeButton: rootCssClass.element("close-button")
 };
 
 export default cssClasses;

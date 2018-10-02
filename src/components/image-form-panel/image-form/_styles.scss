@@ -23,12 +23,12 @@
         height: 10rem;
     }
 
-    &__button {
-        background: $white;
+    &__close-button {
+        background: transparent;
+        font-size: 3em;
+        color: $white;
         border: none;
         outline: none;
-        font-Size: 1em;
-        padding: $inline-padding;
         cursor: pointer;
     }
 }
