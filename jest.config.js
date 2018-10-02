@@ -18,8 +18,8 @@ module.exports = {
   testURL: "http://localhost",
   transform: {
     "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-    "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    "^.+\\.css$": "<rootDir>/config/jest/css-transform.js",
+    "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/file-transform.js"
   },
   transformIgnorePatterns: [
     "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"

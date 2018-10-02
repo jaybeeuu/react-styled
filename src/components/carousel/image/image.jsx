@@ -50,21 +50,6 @@ class Image extends Component {
         className={classNames(cssClasses.root, className)}
         data-image-id={imageId}
       >
-        <CSSTransition
-          in={imageDetailsVisible}
-          timeout={durations.COMPLEX}
-          classNames={cssClasses.title}
-          unmountOnExit
-        >
-          <div className={cssClasses.title}>
-            <h1>{title}</h1>
-            <IconButton
-              className={cssClasses.editButton}
-              icon={icons.EDIT}
-              onClick={this.toggleIsEditing}
-            />
-          </div>
-        </CSSTransition>
         <img
           className={cssClasses.image}
           src={url}
@@ -74,16 +59,26 @@ class Image extends Component {
         <CSSTransition
           in={imageDetailsVisible}
           timeout={durations.COMPLEX}
-          classNames={cssClasses.details}
+          classNames={cssClasses.detailsContainer}
           unmountOnExit
         >
-          <div className={cssClasses.details}>
-            <p className={cssClasses.description}>{description}</p>
-            <ul className={cssClasses.tags}>
-              {tags.map((tag, index) => (
-                <li className={cssClasses.tag} key={index}>{tag}</li>
-              ))}
-            </ul>
+          <div className={cssClasses.detailsContainer}>
+            <div className={cssClasses.title}>
+              <h1>{title}</h1>
+              <IconButton
+                className={cssClasses.editButton}
+                icon={icons.EDIT}
+                onClick={this.toggleIsEditing}
+              />
+            </div>
+            <div className={cssClasses.details}>
+              <p className={cssClasses.description}>{description}</p>
+              <ul className={cssClasses.tags}>
+                {tags.map((tag, index) => (
+                  <li className={cssClasses.tag} key={index}>{tag}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </CSSTransition>
       </div>

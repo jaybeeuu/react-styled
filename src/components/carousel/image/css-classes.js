@@ -4,11 +4,12 @@ const rootCssClass = cssClass("image");
 
 const cssClasses = {
   root: rootCssClass(),
+  detailsContainer: rootCssClass.element("details-container"),
   title: rootCssClass.element("title"),
   editButton: rootCssClass.element("edit-button"),
+  details: rootCssClass.element("details"),
   image: rootCssClass.element("image"),
   description: rootCssClass.element("description"),
-  details: rootCssClass.element("details"),
   tags: rootCssClass.element("tags"),
   tag: rootCssClass.element("tag")
 };
