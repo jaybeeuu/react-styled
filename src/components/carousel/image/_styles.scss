@@ -1,6 +1,22 @@
 @import "../../styles/colours";
 @import "../../styles/mixins";
 
+@mixin fade-in-out {
+    @include transition-complex;
+
+    &-enter,
+    &-exit-active,
+    &-exit-done {
+        opacity: 0;
+    }
+
+    &-enter-active,
+    &-enter-done,
+    &-exit-done {
+        opacity: 1;
+    }
+}
+
 .image {
     position: relative;
     height: 100%;
@@ -14,6 +30,7 @@
         margin: 0;
         display: flex;
         flex-direction: row;
+        @include fade-in-out;
     }
 
     &__edit-button {
@@ -34,6 +51,7 @@
         left: 0;
         right: 0;
         margin: 0;
+        @include fade-in-out;
     }
 
     &__image {

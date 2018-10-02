@@ -8,6 +8,7 @@ html, body, #app, .app-container {
     border: none;
     background-color: $black;
     color: $white;
+    overflow: hidden;
 }
 
 .app-container {

@@ -2,10 +2,12 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { CSSTransition } from "react-transition-group";
 import * as fromImages from "../../../redux/images/selectors";
 import { setIsEditing, setImageDetailsVisible } from "../../../redux/ui/actions";
-import * as fromUi from "../../../redux/ui/selectors";
 import IconButton, { icons } from "../../common/icon-button/icon-button";
+import * as fromUi from "../../../redux/ui/selectors";
+import durations from "../../styles/durations";
 import cssClasses from "./css-classes";
 
 import "./_styles.scss";
@@ -48,7 +50,12 @@ class Image extends Component {
         className={classNames(cssClasses.root, className)}
         data-image-id={imageId}
       >
-        { imageDetailsVisible ? (
+        <CSSTransition
+          in={imageDetailsVisible}
+          timeout={durations.COMPLEX}
+          classNames={cssClasses.title}
+          unmountOnExit
+        >
           <div className={cssClasses.title}>
             <h1>{title}</h1>
             <IconButton
@@ -57,14 +64,19 @@ class Image extends Component {
               onClick={this.toggleIsEditing}
             />
           </div>
-        ) : null }
+        </CSSTransition>
         <img
           className={cssClasses.image}
           src={url}
           alt={title}
           onClick={this.toggleImageDetailsVisible}
         />
-        { imageDetailsVisible ? (
+        <CSSTransition
+          in={imageDetailsVisible}
+          timeout={durations.COMPLEX}
+          classNames={cssClasses.details}
+          unmountOnExit
+        >
           <div className={cssClasses.details}>
             <p className={cssClasses.description}>{description}</p>
             <ul className={cssClasses.tags}>
@@ -73,7 +85,7 @@ class Image extends Component {
               ))}
             </ul>
           </div>
-        ) : null }
+        </CSSTransition>
       </div>
     );
   }

@@ -6,7 +6,7 @@
         @include transition-complex;
         width: 20em;
 
-        &-enter
+        &-enter,
         &-exit-active,
         &-exit-done {
             width: 0;

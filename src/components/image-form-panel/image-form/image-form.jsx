@@ -21,19 +21,22 @@ class ImageForm extends Component {
     setIsEditing: PropTypes.func.isRequired
   };
 
-  onDescriptionChanged = (e) => {
-    this.props.setDescription(e.target.value);
+  onDescriptionChanged = (event) => {
+    this.props.setDescription(event.target.value);
   };
 
-  onTagsChanged = (e) => {
-    this.props.setTags(e.target.value.split(","));
+  onTagsChanged = (event) => {
+    this.props.setTags(event.target.value.split(","));
   };
 
-  onTitleChanged = (e) => {
-    this.props.setTitle(e.target.value);
+  onTitleChanged = (event) => {
+    this.props.setTitle(event.target.value);
   };
 
-  onDoneClicked = () => this.props.setIsEditing(false);
+  onDoneClicked = (event) => {
+    this.props.setIsEditing(false);
+    event.preventDefault();
+  };
 
   render() {
     const {
