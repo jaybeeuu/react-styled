@@ -1,7 +1,7 @@
 {
   "plugins": [
     "babel",
-    "import",
+    "import"
   ],
   "extends": [
     "eslint:recommended",
