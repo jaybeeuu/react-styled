@@ -2,7 +2,11 @@ const address = "http://localhost:3000";
 
 const navigate = () => {
   cy.clearLocalStorage("state");
-  cy.visit(address);
+  cy.visit(address,  {
+    onBeforeLoad: (win) => {
+      win.sessionStorage.clear();
+    }
+  });
 };
 
 export default {

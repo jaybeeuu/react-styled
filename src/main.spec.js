@@ -1,9 +1,6 @@
-import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
 
 import { saveState, loadState } from "./api/persistence";
-import App from "./components/App";
 import debounce from "./utilities/debounce";
 import configureStore from "./redux/configure-store";
 
