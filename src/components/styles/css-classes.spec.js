@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import cssClass from "./css-class";
 
 describe("cssClass", () => {
