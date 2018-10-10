@@ -1,8 +1,7 @@
-import env from "../api/env";
 import defaultState from "./default-state.json";
 import log from "./logger";
 
-const defaultPersistenceStore = env.NODE_ENV === "development" ? window.sessionStorage : window.localStorage;
+const defaultPersistenceStore = window.localStorage;
 
 let persistenceStore = defaultPersistenceStore;
 

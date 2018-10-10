@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import classNames from "classnames";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import preload from "../../api/preload";
@@ -10,14 +9,19 @@ import IconButton, { icons } from "../common/icon-button/icon-button";
 import cssClasses from "./css-classes";
 import Image from "./image/image";
 
-import "./_styles.scss";
+import * as styles from "./styles";
 
 class Carousel extends Component {
   static propTypes = {
-    className: PropTypes.string,
     imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
     setSelectedImageId: PropTypes.func.isRequired,
-    selectedImageId: PropTypes.number.isRequired
+    selectedImageId: PropTypes.number.isRequired,
+    style: PropTypes.object
+  };
+
+  state = {
+    leftNavButtonHovered: false,
+    rightNavButtonHovered: false
   };
 
   componentDidMount() {
@@ -34,36 +38,53 @@ class Carousel extends Component {
     setSelectedImageId(selectedImageId - 1);
   }
 
+  onLeftButtonMouseEnter = () => this.setState({ leftNavButtonHovered: true });
+  onLeftButtonMouseLeave = () => this.setState({ leftNavButtonHovered: false });
+  onRightButtonMouseEnter = () => this.setState({ rightNavButtonHovered: true });
+  onRightButtonMouseLeave = () => this.setState({ rightNavButtonHovered: false });
+
   render() {
     const {
-      className,
       imageUrls,
-      selectedImageId
+      selectedImageId,
+      style
     } = this.props;
+    const {
+      leftNavButtonHovered,
+      rightNavButtonHovered
+    } = this.state;
 
     const isFirstImage = !selectedImageId;
     const isLastImage = selectedImageId === imageUrls.length - 1;
 
     return (
-      <div className={classNames(className, cssClasses.root)} >
+      <div style={{ ...styles.root, ...style }} >
         { !isFirstImage ? (
           <IconButton
-            className={classNames(
-              cssClasses.navButton,
-              cssClasses.navButtonLeft
-            )}
+            className={cssClasses.navButtonLeft}
+            style={{
+              ...styles.navButton.default,
+              ...styles.navButton.left,
+              ...styles.navButton.hover(leftNavButtonHovered)
+            }}
             onClick={this.selectPreviousImage.bind(this)}
+            onMouseEnter={this.onLeftButtonMouseEnter}
+            onMouseLeave={this.onLeftButtonMouseLeave}
             icon={icons.CHEVRON_LEFT}
           />
         ) : null }
         <Image className={cssClasses.image} imageId={selectedImageId} />
         { !isLastImage ? (
           <IconButton
-            className={classNames(
-              cssClasses.navButton,
-              cssClasses.navButtonRight
-            )}
+            className={cssClasses.navButtonRight}
+            style={{
+              ...styles.navButton.default,
+              ...styles.navButton.right,
+              ...styles.navButton.hover(rightNavButtonHovered)
+            }}
             onClick={this.selectNextImage.bind(this)}
+            onMouseEnter={this.onRightButtonMouseEnter}
+            onMouseLeave={this.onRightButtonMouseLeave}
             icon={icons.CHEVRON_RIGHT}
           />
         ) : null }

@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -8,18 +7,18 @@ import { setIsEditing } from "../../../redux/ui/actions";
 import IconButton, { icons } from "../../common/icon-button/icon-button";
 import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import * as styles from "./styles";
 
 class ImageForm extends Component {
   static propTypes = {
-    className: PropTypes.string,
     description: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
     title: PropTypes.string,
     setDescription: PropTypes.func.isRequired,
     setTags: PropTypes.func.isRequired,
     setTitle: PropTypes.func.isRequired,
-    setIsEditing: PropTypes.func.isRequired
+    setIsEditing: PropTypes.func.isRequired,
+    style: PropTypes.object
   };
 
   onDescriptionChanged = (event) => {
@@ -41,58 +40,65 @@ class ImageForm extends Component {
 
   render() {
     const {
-      className,
       title,
       description,
-      tags
+      tags,
+      style
     } = this.props;
     return (
-      <form className={classNames(cssClasses.root, className)}>
+      <form style={{ ...styles.root, ...style }}>
         <IconButton
           className={cssClasses.closeButton}
           icon={icons.CHEVRON_RIGHT}
           onClick={this.onCloseClicked}
+          style={styles.closeButton}
         />
-        <p className={cssClasses.fieldGroup}>
+        <p>
           <label
             className={cssClasses.label}
             htmlFor="image-title"
+            style={styles.label}
           >
             Title
           </label>
           <input
             className={cssClasses.field}
             name="image-title"
-            value={title}
             onChange={this.onTitleChanged}
+            style={styles.field}
+            value={title}
           />
         </p>
-        <p className={cssClasses.fieldGroup}>
+        <p>
           <label
             className={cssClasses.label}
             htmlFor="description"
+            style={styles.label}
           >
             Description
           </label>
           <textarea
             className={cssClasses.field}
             name="description"
-            value={description}
             onChange={this.onDescriptionChanged}
+            style={styles.textarea}
+            value={description}
           />
         </p>
-        <p className={cssClasses.fieldGroup}>
+        <p>
           <label
             className={cssClasses.label}
             htmlFor="tags"
+            style={styles.label}
           >
             Tags
           </label>
           <input
             className={cssClasses.field}
             name="tags"
-            value={tags}
             onChange={this.onTagsChanged}
+            value={tags}
+            style={styles.field}
           />
         </p>
       </form>

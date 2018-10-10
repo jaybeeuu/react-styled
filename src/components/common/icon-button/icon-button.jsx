@@ -1,15 +1,17 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import * as styles from "./styles";
 
 class IconButton extends Component {
   static propTypes = {
     className: PropTypes.string.isRequired,
+    style: PropTypes.object,
     icon: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func
   };
 
   onClick = (event) => {
@@ -18,13 +20,23 @@ class IconButton extends Component {
   };
 
   render() {
-    const { className, icon } = this.props;
+    const {
+      className,
+      icon,
+      onMouseEnter,
+      onMouseLeave,
+      style
+    } = this.props;
+
     return (
       <button
-        className={classNames(cssClasses.root, className, "material-icons")}
+        className={classNames(className, "material-icons")}
+        style={style}
         onClick={this.onClick}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <span className={cssClasses.icon}>{icon}</span>
+        <span style={styles.icon}>{icon}</span>
       </button>
     );
   }

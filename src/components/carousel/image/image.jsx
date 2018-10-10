@@ -1,16 +1,15 @@
-import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { CSSTransition } from "react-transition-group";
+import { Transition } from "react-transition-group";
 import * as fromImages from "../../../redux/images/selectors";
 import { setIsEditing, setImageDetailsVisible } from "../../../redux/ui/actions";
 import IconButton, { icons } from "../../common/icon-button/icon-button";
 import * as fromUi from "../../../redux/ui/selectors";
-import durations from "../../styles/durations";
-import cssClasses from "./css-classes";
+import { durations } from "../../styles/constants";
 
-import "./_styles.scss";
+import cssClasses from "./css-classes";
+import * as styles from "./styles";
 
 class Image extends Component {
   static propTypes = {
@@ -36,7 +35,6 @@ class Image extends Component {
 
   render() {
     const {
-      className,
       imageDetailsVisible,
       imageId,
       url,
@@ -47,40 +45,58 @@ class Image extends Component {
 
     return (
       <div
-        className={classNames(cssClasses.root, className)}
+        style={styles.root}
         data-image-id={imageId}
       >
         <img
           className={cssClasses.image}
+          style={styles.image}
           src={url}
           alt={title}
           onClick={this.toggleImageDetailsVisible}
         />
-        <CSSTransition
+        <Transition
           in={imageDetailsVisible}
-          timeout={durations.COMPLEX}
-          classNames={cssClasses.detailsContainer}
+          timeout={durations.complex}
           unmountOnExit
         >
-          <div className={cssClasses.detailsContainer}>
-            <div className={cssClasses.title}>
-              <h1>{title}</h1>
-              <IconButton
-                className={cssClasses.editButton}
-                icon={icons.EDIT}
-                onClick={this.toggleIsEditing}
-              />
+          {(state) => (
+            <div
+              style={{
+                ...styles.detailsContainer.default,
+                ...styles.detailsContainer[state]
+              }}
+            >
+              <div
+                className={cssClasses.title}
+                style={styles.title}
+              >
+                <h1>{title}</h1>
+                <IconButton
+                  className={cssClasses.editButton}
+                  style={styles.editButton}
+                  icon={icons.EDIT}
+                  onClick={this.toggleIsEditing}
+                />
+              </div>
+              <div style={styles.details}>
+                <p
+                  className={cssClasses.description}
+                  style={styles.description}
+                >
+                  {description}
+                </p>
+                <ul style={styles.tags}>
+                  {tags.map((tag, index) => (
+                    <li key={index} style={styles.tag}>
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className={cssClasses.details}>
-              <p className={cssClasses.description}>{description}</p>
-              <ul className={cssClasses.tags}>
-                {tags.map((tag, index) => (
-                  <li className={cssClasses.tag} key={index}>{tag}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </CSSTransition>
+          )}
+        </Transition>
       </div>
     );
   }

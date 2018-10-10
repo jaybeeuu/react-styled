@@ -1,28 +1,29 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { CSSTransition } from "react-transition-group";
+import { Transition } from "react-transition-group";
 import { connect } from "react-redux";
 import * as fromUi from "../../redux/ui/selectors";
-import durations from "../styles/durations";
+import { durations } from "../styles/constants";
 import ImageForm from "./image-form/image-form" ;
-import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import * as styles from "./styles";
 
 const ImageFormPanel = ({ selectedImageId, isEditing }) => (
-  <div className={cssClasses.root}>
-    <CSSTransition
-      in={isEditing}
-      timeout={durations.COMPLEX}
-      classNames={cssClasses.form}
-      unmountOnExit
-    >
+  <Transition
+    in={isEditing}
+    timeout={durations.complex}
+    unmountOnExit
+  >
+    {(state) => (
       <ImageForm
         imageId={selectedImageId}
-        className={cssClasses.form}
+        style={{
+          ...styles.form.default,
+          ...styles.form[state]
+        }}
       />
-    </CSSTransition>
-  </div>
+    )}
+  </Transition>
 );
 
 ImageFormPanel.propTypes = {

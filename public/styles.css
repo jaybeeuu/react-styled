@@ -1,0 +1,22 @@
+html, body, #app {
+    font-family: 'Raleway', sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    overflow: hidden;
+    background-color: black;
+}
+
+textarea, button:not(.material-icons) {
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea, input, p {
+    font-size: 1em;
+}
+
+label, button:not(.material-icons) {
+    font-size: 1.1em;
+}
