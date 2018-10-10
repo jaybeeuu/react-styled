@@ -34,10 +34,10 @@ export const textarea = {
 };
 
 export const closeButton = {
-  background: "transparent",
-  fontSize: "3em",
   color: colours.white,
+  cursor: "pointer",
+  background: "transparent",
   border: "none",
-  outline: "none",
-  cursor: "pointer"
+  fontSize: "3em",
+  outline: "none"
 };

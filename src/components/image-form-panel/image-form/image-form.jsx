@@ -48,6 +48,7 @@ class ImageForm extends Component {
     return (
       <form style={{ ...styles.root, ...style }}>
         <IconButton
+          id={cssClasses.closeButton}
           className={cssClasses.closeButton}
           icon={icons.CHEVRON_RIGHT}
           onClick={this.onCloseClicked}

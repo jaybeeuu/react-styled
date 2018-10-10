@@ -1,3 +1,4 @@
+import { StyleRoot } from "radium";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -18,7 +19,9 @@ const start = () => {
 
   ReactDOM.render((
     <Provider store={store}>
-      <App />
+      <StyleRoot>
+        <App />
+      </StyleRoot>
     </Provider>
   ), document.getElementById("app"));
 };

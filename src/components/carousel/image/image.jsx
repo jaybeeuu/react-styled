@@ -73,6 +73,7 @@ class Image extends Component {
               >
                 <h1>{title}</h1>
                 <IconButton
+                  id={cssClasses.editButton}
                   className={cssClasses.editButton}
                   style={styles.editButton}
                   icon={icons.EDIT}

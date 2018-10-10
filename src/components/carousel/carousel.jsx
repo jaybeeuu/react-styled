@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import radium from "radium";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import preload from "../../api/preload";
@@ -11,6 +12,7 @@ import Image from "./image/image";
 
 import * as styles from "./styles";
 
+@radium
 class Carousel extends Component {
   static propTypes = {
     imageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -38,21 +40,12 @@ class Carousel extends Component {
     setSelectedImageId(selectedImageId - 1);
   }
 
-  onLeftButtonMouseEnter = () => this.setState({ leftNavButtonHovered: true });
-  onLeftButtonMouseLeave = () => this.setState({ leftNavButtonHovered: false });
-  onRightButtonMouseEnter = () => this.setState({ rightNavButtonHovered: true });
-  onRightButtonMouseLeave = () => this.setState({ rightNavButtonHovered: false });
-
   render() {
     const {
       imageUrls,
       selectedImageId,
       style
     } = this.props;
-    const {
-      leftNavButtonHovered,
-      rightNavButtonHovered
-    } = this.state;
 
     const isFirstImage = !selectedImageId;
     const isLastImage = selectedImageId === imageUrls.length - 1;
@@ -62,36 +55,25 @@ class Carousel extends Component {
         { !isFirstImage ? (
           <IconButton
             className={cssClasses.navButtonLeft}
-            style={{
-              ...styles.navButton.default,
-              ...styles.navButton.left,
-              ...styles.navButton.hover(leftNavButtonHovered)
-            }}
-            onClick={this.selectPreviousImage.bind(this)}
-            onMouseEnter={this.onLeftButtonMouseEnter}
-            onMouseLeave={this.onLeftButtonMouseLeave}
             icon={icons.CHEVRON_LEFT}
+            onClick={this.selectPreviousImage.bind(this)}
+            style={styles.navButton.left}
           />
         ) : null }
         <Image className={cssClasses.image} imageId={selectedImageId} />
         { !isLastImage ? (
           <IconButton
             className={cssClasses.navButtonRight}
-            style={{
-              ...styles.navButton.default,
-              ...styles.navButton.right,
-              ...styles.navButton.hover(rightNavButtonHovered)
-            }}
-            onClick={this.selectNextImage.bind(this)}
-            onMouseEnter={this.onRightButtonMouseEnter}
-            onMouseLeave={this.onRightButtonMouseLeave}
             icon={icons.CHEVRON_RIGHT}
+            onClick={this.selectNextImage.bind(this)}
+            style={styles.navButton.right}
           />
         ) : null }
       </div>
     );
   }
 }
+
 
 const mapStateToProps = (state) => ({
   imageUrls: fromImages.getAllUrls(state),

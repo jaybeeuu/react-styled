@@ -1,3 +1,4 @@
+import radium from "radium";
 import React from "react";
 import Carousel from "./carousel/carousel";
 import ImageFormPanel from "./image-form-panel/image-form-panel" ;
@@ -11,4 +12,4 @@ const App = () => (
   </div>
 );
 
-export default App;
+export default radium(App);

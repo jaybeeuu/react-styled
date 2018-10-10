@@ -1,9 +1,12 @@
+// import log from "../../../api/logger";
 import classNames from "classnames";
+import radium from "radium";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 import * as styles from "./styles";
 
+@radium
 class IconButton extends Component {
   static propTypes = {
     className: PropTypes.string.isRequired,
@@ -23,20 +26,24 @@ class IconButton extends Component {
     const {
       className,
       icon,
-      onMouseEnter,
-      onMouseLeave,
       style
     } = this.props;
 
     return (
       <button
         className={classNames(className, "material-icons")}
-        style={style}
+        style={[styles.button, style]}
+        key={"button"}
         onClick={this.onClick}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
       >
-        <span style={styles.icon}>{icon}</span>
+        <span
+          key={"icon"}
+          style={[
+            styles.icon
+          ]}
+        >
+          {icon}
+        </span>
       </button>
     );
   }
