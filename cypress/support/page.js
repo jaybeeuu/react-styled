@@ -1,7 +1,3 @@
-import carouselCssClasses from "../../src/components/carousel/css-classes";
-import imageCssClasses from "../../src/components/carousel/image/css-classes";
-import imageFormCssClasses from "../../src/components/image-form-panel/image-form/css-classes";
-
 const address = "http://localhost:3000";
 
 const navigate = () => {
@@ -13,21 +9,25 @@ const navigate = () => {
   });
 };
 
-const asClassSelector = (cssClass) => `.${cssClass}`;
+const classBuilder = (name) => (local, hash) => `.${name}__${local}--${hash}`;
+
+const imageClass = classBuilder("image");
+const carouselClass = classBuilder("carousel");
+const imageFormClass = classBuilder("image-form");
 
 export default {
   address,
   navigate,
   carousel: {
     image: {
-      selector: asClassSelector(imageCssClasses.image),
-      title: asClassSelector(imageCssClasses.title),
-      editButton: asClassSelector(imageCssClasses.editButton),
-      description: asClassSelector(imageCssClasses.description)
+      selector: imageClass("image", "b3MOD"),
+      title: imageClass("title", "29O_N"),
+      editButton: imageClass("edit-button", "1jiZE"),
+      description: imageClass("description", "Os0bh"),
     },
-    nextButton: asClassSelector(carouselCssClasses.navButtonRight)
+    nextButton: carouselClass("nav-button-right", "3lX-i")
   },
   imageForm: {
-    title: `${asClassSelector(imageFormCssClasses.field)}[name=\"image-title\"]`
+    title: `${imageFormClass("field", "31Frz")}[name="image-title"]`
   },
 };

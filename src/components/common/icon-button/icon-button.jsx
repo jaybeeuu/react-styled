@@ -1,9 +1,8 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import styles from "./icon-button.scss";
 
 class IconButton extends Component {
   static propTypes = {
@@ -21,10 +20,10 @@ class IconButton extends Component {
     const { className, icon } = this.props;
     return (
       <button
-        className={classNames(cssClasses.root, className, "material-icons")}
+        className={classNames(styles.root, className, "material-icons")}
         onClick={this.onClick}
       >
-        <span className={cssClasses.icon}>{icon}</span>
+        <span className={styles.icon}>{icon}</span>
       </button>
     );
   }

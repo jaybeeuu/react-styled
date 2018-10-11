@@ -1,14 +1,13 @@
 import React from "react";
 import Carousel from "./carousel/carousel";
 import ImageFormPanel from "./image-form-panel/image-form-panel" ;
-import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import styles from "./app.scss";
 
 const App = () => (
-  <div className={cssClasses.root}>
-    <Carousel className={cssClasses.carouselPanel}/>
-    <ImageFormPanel className={cssClasses.imageFormPanel}/>
+  <div className={styles.root}>
+    <Carousel className={styles.carouselPanel}/>
+    <ImageFormPanel />
   </div>
 );
 

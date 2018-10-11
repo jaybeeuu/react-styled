@@ -3,23 +3,29 @@ import React from "react";
 import { CSSTransition } from "react-transition-group";
 import { connect } from "react-redux";
 import * as fromUi from "../../redux/ui/selectors";
-import durations from "../styles/durations";
 import ImageForm from "./image-form/image-form" ;
-import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import styles from "./image-form-panel.scss";
+import styleConstants from "../styles/_constants.scss";
 
 const ImageFormPanel = ({ selectedImageId, isEditing }) => (
-  <div className={cssClasses.root}>
+  <div>
     <CSSTransition
       in={isEditing}
-      timeout={durations.COMPLEX}
-      classNames={cssClasses.form}
+      timeout={parseInt(styleConstants.complexDuration)}
+      classNames={{
+        enter: styles.formEnter,
+        enterActive: styles.formEnterActive,
+        enterDone: styles.formEnterDone,
+        exit: styles.formExit,
+        exitActive: styles.formExitActive,
+        exitDone: styles.formExitDone
+      }}
       unmountOnExit
     >
       <ImageForm
         imageId={selectedImageId}
-        className={cssClasses.form}
+        className={styles.form}
       />
     </CSSTransition>
   </div>

@@ -7,17 +7,18 @@ import * as fromImages from "../../../redux/images/selectors";
 import { setIsEditing, setImageDetailsVisible } from "../../../redux/ui/actions";
 import IconButton, { icons } from "../../common/icon-button/icon-button";
 import * as fromUi from "../../../redux/ui/selectors";
-import durations from "../../styles/durations";
-import cssClasses from "./css-classes";
 
-import "./_styles.scss";
+import styles from "./image.scss";
+import styleConstants from "../../styles/_constants.scss";
+
+// eslint-disable-next-line
+console.log(styleConstants);
 
 class Image extends Component {
   static propTypes = {
     className: PropTypes.string,
     description: PropTypes.string,
     imageDetailsVisible: PropTypes.bool.isRequired,
-    imageId: PropTypes.number.isRequired,
     isEditing: PropTypes.bool.isRequired,
     setImageDetailsVisible: PropTypes.func.isRequired,
     setIsEditing: PropTypes.func.isRequired,
@@ -38,7 +39,6 @@ class Image extends Component {
     const {
       className,
       imageDetailsVisible,
-      imageId,
       url,
       title,
       description,
@@ -47,35 +47,41 @@ class Image extends Component {
 
     return (
       <div
-        className={classNames(cssClasses.root, className)}
-        data-image-id={imageId}
+        className={classNames(styles.root, className)}
       >
         <img
-          className={cssClasses.image}
+          className={styles.image}
           src={url}
           alt={title}
           onClick={this.toggleImageDetailsVisible}
         />
         <CSSTransition
           in={imageDetailsVisible}
-          timeout={durations.COMPLEX}
-          classNames={cssClasses.detailsContainer}
+          timeout={parseInt(styleConstants.complexDuration)}
+          classNames={{
+            enter: styles.detailsContainerEnter,
+            enterActive: styles.detailsContainerEnterActive,
+            enterDone: styles.detailsContainerEnterDone,
+            exit: styles.detailsContainerExit,
+            exitActive: styles.detailsContainerExitActive,
+            exitDone: styles.detailsContainerExitDone
+          }}
           unmountOnExit
         >
-          <div className={cssClasses.detailsContainer}>
-            <div className={cssClasses.title}>
+          <div className={styles.detailsContainer}>
+            <div className={styles.title}>
               <h1>{title}</h1>
               <IconButton
-                className={cssClasses.editButton}
+                className={styles.editButton}
                 icon={icons.EDIT}
                 onClick={this.toggleIsEditing}
               />
             </div>
-            <div className={cssClasses.details}>
-              <p className={cssClasses.description}>{description}</p>
-              <ul className={cssClasses.tags}>
+            <div className={styles.details}>
+              <p className={styles.description}>{description}</p>
+              <ul className={styles.tags}>
                 {tags.map((tag, index) => (
-                  <li className={cssClasses.tag} key={index}>{tag}</li>
+                  <li className={styles.tag} key={index}>{tag}</li>
                 ))}
               </ul>
             </div>

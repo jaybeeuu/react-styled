@@ -7,10 +7,9 @@ import * as fromImages from "../../redux/images/selectors";
 import { setSelectedImageId } from "../../redux/ui/actions";
 import * as fromUi from "../../redux/ui/selectors";
 import IconButton, { icons } from "../common/icon-button/icon-button";
-import cssClasses from "./css-classes";
 import Image from "./image/image";
 
-import "./_styles.scss";
+import styles from "./carousel.scss";
 
 class Carousel extends Component {
   static propTypes = {
@@ -45,24 +44,18 @@ class Carousel extends Component {
     const isLastImage = selectedImageId === imageUrls.length - 1;
 
     return (
-      <div className={classNames(className, cssClasses.root)} >
+      <div className={classNames(styles.root, className)} >
         { !isFirstImage ? (
           <IconButton
-            className={classNames(
-              cssClasses.navButton,
-              cssClasses.navButtonLeft
-            )}
+            className={styles.navButtonLeft}
             onClick={this.selectPreviousImage.bind(this)}
             icon={icons.CHEVRON_LEFT}
           />
         ) : null }
-        <Image className={cssClasses.image} imageId={selectedImageId} />
+        <Image className={styles.image} imageId={selectedImageId} />
         { !isLastImage ? (
           <IconButton
-            className={classNames(
-              cssClasses.navButton,
-              cssClasses.navButtonRight
-            )}
+            className={styles.navButtonRight}
             onClick={this.selectNextImage.bind(this)}
             icon={icons.CHEVRON_RIGHT}
           />
