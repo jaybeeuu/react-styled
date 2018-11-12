@@ -9,7 +9,6 @@ Modern CSS needs to be quick small and scaleable. Css is not that so what do we 
 
 ## Thoughts
 
-
 ## Interesting Links
 
 ### General

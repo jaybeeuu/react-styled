@@ -9,5 +9,22 @@
     "rules": {
       "no-unused-expressions": 0,
       "chai-friendly/no-unused-expressions": 2
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/plugins/**/*.*"
+        ],
+        "env": {
+          "node": true,
+          "browser": false
+        },
+        "parserOptions": {
+          "sourceType": "module"
+        },
+        "rules": {
+          "no-console": "off"
+        }
+      }
+    ]
 }

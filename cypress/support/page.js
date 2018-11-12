@@ -1,3 +1,5 @@
+import imageCss from "../../src/components/carousel/image/css-classes";
+
 const address = "http://localhost:3000";
 
 const navigate = () => {
@@ -9,12 +11,14 @@ const navigate = () => {
   });
 };
 
+const asClassSelector = (cssClass) => `.${cssClass}`;
+
 export default {
   address,
   navigate,
   carousel: {
     image: {
-      selector: ".image__image",
+      selector: asClassSelector(imageCss.image),
       title: ".image__title",
       editButton: ".image__edit-button",
       description: ".image__description",
