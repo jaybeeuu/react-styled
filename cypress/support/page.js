@@ -1,4 +1,6 @@
-import imageCss from "../../src/components/carousel/image/css-classes";
+import carouselCssClasses from "../../src/components/carousel/image/css-classes";
+import imageCssClasses from "../../src/components/carousel/image/css-classes";
+import imageFormCssClasses from "../../src/components/image-form-panel/image-form/css-classes";
 
 const address = "http://localhost:3000";
 
@@ -18,14 +20,14 @@ export default {
   navigate,
   carousel: {
     image: {
-      selector: asClassSelector(imageCss.image),
-      title: ".image__title",
-      editButton: ".image__edit-button",
-      description: ".image__description",
+      selector: asClassSelector(imageCssClasses.image),
+      title: asClassSelector(imageCssClasses.title),
+      editButton: asClassSelector(imageCssClasses.editButton),
+      description: asClassSelector(imageCssClasses.description)
     },
-    nextButton: ".carousel__nav-button"
+    nextButton: asClassSelector(carouselCssClasses.nextButton)
   },
   imageForm: {
-    title: ".image-form__field[name=\"image-title\"]"
+    title: `${asClassSelector(imageFormCssClasses.imageForm)}[name=\"image-title\"]`
   },
 };

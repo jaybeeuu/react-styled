@@ -5,20 +5,17 @@ const chalk = require("chalk");
 const open = require("open");
 const webpack = require("webpack");
 const WebpackDevServer = require("webpack-dev-server");
+const merge = require("webpack-merge");
 const config = require("../config/webpack.config.dev");
 
-const readyForReloadConfig = {
-  ...config,
-  entry: [
-    require.resolve("webpack-dev-server/client") + "?/",
-    require.resolve("webpack/hot/dev-server"),
-    ...config.entry
-  ],
-  plugins: [
-    ...config.plugins,
-    new webpack.HotModuleReplacementPlugin()
-  ]
-};
+const readyForReloadConfig = merge(
+  config,
+  {
+    entry: [
+      require.resolve("webpack-dev-server/client") + "?/",
+    ]
+  }
+);
 
 const compiler = webpack(readyForReloadConfig);
 
