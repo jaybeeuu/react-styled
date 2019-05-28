@@ -1,4 +1,4 @@
-import carouselCssClasses from "../../src/components/carousel/image/css-classes";
+import carouselCssClasses from "../../src/components/carousel/css-classes";
 import imageCssClasses from "../../src/components/carousel/image/css-classes";
 import imageFormCssClasses from "../../src/components/image-form-panel/image-form/css-classes";
 
@@ -25,9 +25,9 @@ export default {
       editButton: asClassSelector(imageCssClasses.editButton),
       description: asClassSelector(imageCssClasses.description)
     },
-    nextButton: asClassSelector(carouselCssClasses.nextButton)
+    nextButton: asClassSelector(carouselCssClasses.navButtonRight)
   },
   imageForm: {
-    title: `${asClassSelector(imageFormCssClasses.imageForm)}[name=\"image-title\"]`
+    title: `${asClassSelector(imageFormCssClasses.field)}[name=\"image-title\"]`
   },
 };
