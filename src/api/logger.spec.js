@@ -7,10 +7,10 @@ describe("logger", () => {
 
       const args = [1, "2", { id: 3 }];
 
-      log(args);
+      log(...args);
 
       // eslint-disable-next-line no-console
-      expect(console.log).toHaveBeenCalledWith(args);
+      expect(console.log).toHaveBeenCalledWith(...args);
     });
   });
 });
