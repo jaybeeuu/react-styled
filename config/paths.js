@@ -9,6 +9,7 @@ module.exports = {
   appPublic: resolveApp("public"),
   appHtml: resolveApp("public/index.html"),
   appIndexJs: resolveApp("src/index.js"),
-  appSrc: resolveApp("src"),
-  appPackageJson: resolveApp("package.json")
+  appPackageJson: resolveApp("package.json"),
+  appShared: resolveApp("shared"),
+  appSrc: resolveApp("src")
 };

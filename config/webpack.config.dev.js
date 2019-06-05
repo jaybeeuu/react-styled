@@ -5,6 +5,8 @@ const paths = require("./paths");
 
 const env = require("./env")();
 
+console.log(paths.appShared);
+
 module.exports = {
   mode: "development",
   devtool: "cheap-module-source-map",
@@ -18,6 +20,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".js", ".jsx"],
+    alias: {
+      shared: paths.appShared
+    }
   },
   watch: true,
   stats: {

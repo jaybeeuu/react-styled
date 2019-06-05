@@ -16,7 +16,7 @@ const readyForReloadConfig = merge(
     ]
   }
 );
-
+console.log(JSON.stringify(readyForReloadConfig, null, 2));
 const compiler = webpack(readyForReloadConfig);
 
 const serverConfig = require("../config/webpackDevServer.config");

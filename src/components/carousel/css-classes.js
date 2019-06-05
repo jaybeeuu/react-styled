@@ -1,4 +1,4 @@
-import cssClass from "../styles/css-class";
+import cssClass from "shared/css-class";
 
 const rootCssClass = cssClass("carousel");
 const navButtonCssClass = cssClass(rootCssClass.element("nav-button"));
